@@ -23,6 +23,11 @@
   display: flex;
 }
 
+.logo:hover {
+  transition: all 1.5s;
+  transform: scale(1.1);
+}
+
 .navbar__logo-icon {
   margin-right: 6px;
 }
@@ -45,6 +50,15 @@
 .navigation__item {
   margin-left: 70px;
   cursor: pointer;
+}
+
+.navigation__link {
+  color: #272727;
+  text-decoration: none;
+}
+
+.navigation__link:hover {
+  color: #56b280;
 }
 
 .tools {

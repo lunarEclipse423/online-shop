@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .about-shop-content {
@@ -33,4 +34,8 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
+}
+
+.about-shop__link {
+  text-decoration: none;
 }

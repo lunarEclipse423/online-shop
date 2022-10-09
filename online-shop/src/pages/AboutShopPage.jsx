@@ -1,5 +1,6 @@
 import React from "react";
-import Button from "./UI/button/Button";
+import Button from "../components/UI/button/Button";
+import { Link } from "react-router-dom";
 import "./AboutShopPage.css";
 
 const AboutShopPage = () => {
@@ -17,7 +18,9 @@ const AboutShopPage = () => {
           avoid using any unnecessary packaging materials and try to source all of our
           ingredients locally to support small local businesses wherever possible.
         </p>
-        <Button>Discover our collection</Button>
+        <Link className="about-shop__link" to="/catalog">
+          <Button>Discover our collection</Button>
+        </Link>
       </div>
     </div>
   );

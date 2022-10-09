@@ -20,3 +20,14 @@
   background: #ffffff;
   border-radius: 4px;
 }
+
+.product__button {
+  padding: 8px 93px;
+  align-self: flex-end;
+}
+
+.product__button:hover .icon_cart_white {
+  width: 24px;
+  height: 23px;
+  background-image: url(../../../icons/icon_cart_green.svg);
+}
