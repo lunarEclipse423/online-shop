@@ -2,12 +2,8 @@ import React from "react";
 import "./Button.css";
 
 const Button = ({ children, ...props }) => {
-  return props.buttonType === "product__button" ? (
-    <button {...props} className="button product__button">
-      {children}
-    </button>
-  ) : (
-    <button {...props} className="button">
+  return (
+    <button {...props} className={`button ${props.buttonType} ${props.classes}`}>
       {children}
     </button>
   );

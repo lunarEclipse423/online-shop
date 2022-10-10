@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { activateModal } from "../../../actions";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   return (
     <div className="navbar">
       <div className="navbar-wrapper">
@@ -24,7 +27,7 @@ const Navbar = () => {
         </ul>
 
         <ul className="tools">
-          <li className="tools__item">
+          <li onClick={() => dispatch(activateModal())} className="tools__item">
             <span className="icon_login"></span>
           </li>
           <li className="tools__item">

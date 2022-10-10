@@ -5,7 +5,6 @@ import "./ProductPage.css";
 
 const ProductPage = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <div className="product-page">
       <div className="product-image">
@@ -13,7 +12,7 @@ const ProductPage = () => {
           width="505"
           height="757"
           className="image_candle"
-          src={location.state.props.largeImage}
+          src={location.state.product.largeImage}
           alt="candle"
         />
         <span className="candleaf-info">
@@ -23,20 +22,30 @@ const ProductPage = () => {
       </div>
       <div className="product-info">
         <div className="product-info__short-details">
-          <h2 className="product__title">{location.state.props.title}®</h2>
-          <span className="product__price">£{location.state.props.price}</span>
+          <h2 className="product__title">{location.state.product.title}®</h2>
+          <span className="product__price">£{location.state.product.price}</span>
           <span className="product__available">Available:</span>
           <div className="product__quantity">
             <span className="quantity__title">Quantity</span>
             <input type="text" className="quantity__input" />
           </div>
         </div>
-        <Button buttonType="product__button"> <span className="icon_cart_white product__icon"></span> + Add to cart</Button>
+        <Button buttonType="product__button">
+          {" "}
+          <span className="icon_cart_white product__icon"></span> + Add to cart
+        </Button>
         <div className="product__description">
-          <p>Scented candle in a patterned glass holder. Diameter 8 cm, height 11 cm. Burn
-          time 60 hours.</p> 
-          <p><span className="description_bold">Weight: </span>614 g</p>
-          <p><span className="description_bold">Composition: </span>Paraffin 80%, Plant wax 20%Container: Glass 100%</p>
+          <p>
+            Scented candle in a patterned glass holder. Diameter 8 cm, height 11 cm. Burn
+            time 60 hours.
+          </p>
+          <p>
+            <span className="description_bold">Weight: </span>614 g
+          </p>
+          <p>
+            <span className="description_bold">Composition: </span>Paraffin 80%, Plant wax
+            20%Container: Glass 100%
+          </p>
         </div>
       </div>
     </div>

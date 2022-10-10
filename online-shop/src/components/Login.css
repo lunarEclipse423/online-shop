@@ -1,0 +1,60 @@
+.login-icon-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.icon_login-logo {
+  width: 69px;
+  height: 70px;
+  display: inline-block;
+  background-image: url(../icons/icon_login-logo.svg);
+}
+
+.login__title {
+  margin-top: 12px;
+  margin-bottom: 30px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: -0.9px;
+  color: #272727;
+  text-align: center;
+}
+
+.inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__input {
+  margin-bottom: 12px;
+}
+
+.buttons-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-form__button {
+  padding: 8px 55px;
+}
+
+.cancel_button {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.9px;
+  text-decoration-line: underline;
+  color: #56b280;
+  background: none;
+  border: 1px solid #fff;
+}
+
+.cancel_button:hover {
+  border: 1px solid #56b280;
+}
