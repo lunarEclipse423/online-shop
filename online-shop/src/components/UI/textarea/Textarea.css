@@ -1,22 +1,23 @@
-.input-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.input {
+.textarea {
   padding: 7px 17px;
-  width: 350px;
-  height: 40px;
+  width: 100%;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #272727;
   background: #ffffff;
   border: 0.5px solid #898989;
+  resize: none;
 }
 
-.input:focus {
+.textarea:focus {
   outline: none;
   border: 0.5px solid #56b280;
 }
 
-.input::placeholder,
+.textarea::placeholder,
 .error {
   font-family: "Poppins";
   font-style: normal;

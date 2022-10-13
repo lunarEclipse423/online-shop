@@ -2,7 +2,7 @@ const initState = {
   cartItems: [],
 };
 
-const addCartItem = (state = initState, action) => {
+const cartItemsReducer = (state = initState, action) => {
   switch (action.type) {
     case "ADD_CART_ITEM":
       return {
@@ -31,4 +31,4 @@ const addCartItem = (state = initState, action) => {
   }
 };
 
-export default addCartItem;
+export default cartItemsReducer;

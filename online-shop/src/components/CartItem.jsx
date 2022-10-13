@@ -6,7 +6,7 @@ import Button from "./UI/button/Button";
 
 const CartItem = ({ ...product }) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.addCartItem.cartItems);
+  const cartItems = useSelector((state) => state.manageCartItems.cartItems);
   const [currProductQuantity, setCurrProductQuantity] = useState(product.quantity);
   const imgBaseUrl =
     "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";

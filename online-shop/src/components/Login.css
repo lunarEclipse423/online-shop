@@ -1,3 +1,7 @@
+.login-form {
+  position: relative;
+}
+
 .login-icon-wrapper {
   display: flex;
   justify-content: center;
@@ -8,6 +12,20 @@
   height: 70px;
   display: inline-block;
   background-image: url(../icons/icon_login-logo.svg);
+}
+
+.cross-icon-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.icon_cross {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-image: url(../icons/icon_cross.svg);
 }
 
 .login__title {

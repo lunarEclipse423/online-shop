@@ -30,6 +30,20 @@ export const logout = () => {
   };
 };
 
+export const fetchProducts = (fetchedProducts) => {
+  return {
+    type: "FETCH_PRODUCTS",
+    products: fetchedProducts,
+  };
+};
+
+export const editProduct = (product) => {
+  return {
+    type: "EDIT_PRODUCT",
+    product: product,
+  };
+};
+
 export const addProduct = (newCartItem) => {
   return {
     type: "ADD_CART_ITEM",
@@ -56,5 +70,11 @@ export const changeProductQuantity = (cartItem, newQuantity) => {
 export const clearCart = () => {
   return {
     type: "CLEAR_CART",
+  };
+};
+
+export const firstEntry = () => {
+  return {
+    type: "FIRST",
   };
 };

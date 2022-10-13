@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.isLogged);
-  const cartItemsCount = useSelector((state) => state.addCartItem.cartItems.length);
+  const cartItemsCount = useSelector((state) => state.manageCartItems.cartItems.length);
 
   return (
     <div className="navbar">

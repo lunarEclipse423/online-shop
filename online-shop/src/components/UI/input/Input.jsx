@@ -3,7 +3,7 @@ import "./Input.css";
 
 const Input = (props) => {
   return (
-    <>
+    <div className="input-wrapper">
       <input
         className={`input ${props.classes}`}
         type={props.type}
@@ -13,7 +13,7 @@ const Input = (props) => {
         onChange={props.onChange}
       />
       <span className="error">{props.errorMessage}</span>
-    </>
+    </div>
   );
 };
 

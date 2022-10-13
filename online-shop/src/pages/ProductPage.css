@@ -36,7 +36,7 @@
 }
 
 .product-info {
-  max-width: 540px;
+  width: 540px;
   display: flex;
   flex-direction: column;
 }
@@ -179,4 +179,50 @@
 
 .quantity-form__plus {
   padding-right: 10px;
+}
+
+.edit-buttons-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.edit__button {
+  margin-left: 20px;
+}
+
+.cancel_button {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.9px;
+  text-decoration-line: underline;
+  color: #56b280;
+  background: none;
+  border: 1px solid #fff;
+}
+
+.cancel_button:hover {
+  border: 1px solid #56b280;
+}
+
+.edit_input {
+  height: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #272727;
+}
+
+.quantity_input {
+  width: 80px;
+}
+
+.weight_input,
+.composition_input {
+  margin-top: 15px;
 }

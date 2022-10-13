@@ -8,7 +8,7 @@ import "./CartPage.css";
 
 const CartPage = () => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.addCartItem.cartItems);
+  const cartItems = useSelector((state) => state.manageCartItems.cartItems);
   const [totalPrice, setTotalPrice] = useState(calculateCartSum(cartItems));
 
   useMemo(() => setTotalPrice(calculateCartSum(cartItems)), [cartItems]);

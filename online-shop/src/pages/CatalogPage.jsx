@@ -1,14 +1,26 @@
-import { React, useState } from "react";
-import { useEffect } from "react";
-import { getAllProducts } from "../api/ShopService";
+import { React, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import CatalogItem from "../components/CatalogItem";
+import { getAllProducts } from "../api/ShopService";
+import { fetchProducts, firstEntry } from "../actions";
 import "./CatalogPage.css";
 
 const CatalogPage = () => {
+  const dispatch = useDispatch();
+  const productItems = useSelector((state) => state.manageProducts.products);
+  const entry = useSelector((state) => state.firtEntry);
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
-    getAllProducts().then((data) => setProducts(data));
+    if (entry) {
+      dispatch(firstEntry());
+      getAllProducts().then((data) => {
+        dispatch(fetchProducts(data));
+        setProducts(productItems);
+      });
+    } else {
+      setProducts(productItems);
+    }
   }, []);
 
   return (

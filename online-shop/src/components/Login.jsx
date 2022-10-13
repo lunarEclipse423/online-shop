@@ -82,6 +82,10 @@ const Login = () => {
       <div className="login-icon-wrapper">
         <span className="icon_login-logo"></span>
       </div>
+      <div className="cross-icon-wrapper" onClick={cancel}>
+        <span className="icon_cross"></span>
+      </div>
+
       <h2 className="login__title">Sign In</h2>
       <div className="inputs-wrapper">
         <Input
