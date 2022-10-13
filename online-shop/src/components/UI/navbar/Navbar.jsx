@@ -1,11 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { activateModal } from "../../../actions";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { activateModal, logout } from "../../../actions";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.isLogged);
+  const cartItemsCount = useSelector((state) => state.addCartItem.cartItems.length);
+
   return (
     <div className="navbar">
       <div className="navbar-wrapper">
@@ -27,11 +31,37 @@ const Navbar = () => {
         </ul>
 
         <ul className="tools">
-          <li onClick={() => dispatch(activateModal())} className="tools__item">
+          <li className={isLogged === "user" ? "tools__item" : "tools__item hidden"}>
+            <Link className="navigation__link" to="/cart">
+              <span className="icon_cart navbar__icon-cart">
+                <div className={cartItemsCount > 0 ? "cart-items-indicator" : "hidden"}>
+                  <span>{cartItemsCount}</span>
+                </div>
+              </span>
+            </Link>
+          </li>
+          <li
+            onClick={() => dispatch(activateModal())}
+            className={
+              isLogged === "user" || isLogged === "admin"
+                ? "tools__item hidden"
+                : "tools__item"
+            }
+          >
             <span className="icon_login"></span>
           </li>
-          <li className="tools__item">
-            <span className="icon_cart"></span>
+          <li
+            onClick={() => {
+              dispatch(logout());
+              navigate("/about");
+            }}
+            className={
+              isLogged === "user" || isLogged === "admin"
+                ? "tools__item"
+                : "tools__item hidden"
+            }
+          >
+            <span className="icon_logout"></span>
           </li>
         </ul>
       </div>

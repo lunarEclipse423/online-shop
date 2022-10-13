@@ -24,7 +24,7 @@
 }
 
 .logo:hover {
-  transition: all 1.5s;
+  transition: all 0.5s;
   transform: scale(1.1);
 }
 
@@ -68,8 +68,35 @@
 }
 
 .tools__item {
-  margin-right: 20px;
+  margin-left: 20px;
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.navbar__icon-cart {
+  position: relative;
+}
+
+.cart-items-indicator {
+  width: 13px;
+  height: 13px;
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #56b280;
 }
 
 /* ICONS */
@@ -86,6 +113,13 @@
   height: 26px;
   display: inline-block;
   background-image: url(../../../icons/icon_login.svg);
+}
+
+.icon_logout {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-image: url(../../../icons/icon_logout.svg);
 }
 
 .icon_cart {

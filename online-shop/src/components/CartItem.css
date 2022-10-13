@@ -1,0 +1,126 @@
+.cart-item {
+  margin-bottom: 30px;
+  display: flex;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -0.9px;
+  color: #272727;
+}
+
+.cart-item:last-child {
+  margin-bottom: 0;
+}
+
+.cart-item-product {
+  width: 55%;
+  display: flex;
+}
+
+.cart-item-price {
+  width: 15%;
+  text-align: end;
+}
+
+.cart-item__total {
+  width: 15%;
+  text-align: end;
+}
+
+.cart-item__image {
+  margin-right: 30px;
+}
+
+.cart-item__product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item__title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 58px;
+  letter-spacing: -0.9px;
+  color: #272727;
+}
+
+.remove_button {
+  padding: 8px 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.9px;
+  text-decoration-line: underline;
+  color: #56b280;
+  background: none;
+  border: 1px solid #fff;
+}
+
+.remove_button:hover {
+  color: #272727;
+}
+
+.cart-item-quantity-wrapper {
+  position: relative;
+  width: 15%;
+}
+
+.cart-item-quantity-border {
+  position: absolute;
+  right: -20px;
+  width: 92px;
+  border: 1px solid #56b280;
+}
+
+.quantity-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.quantity-form__number {
+  width: 30px;
+  height: 30px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.9px;
+  color: #1d252c;
+  text-align: center;
+  border: none;
+}
+
+.quantity-form__plus,
+.quantity-form__minus {
+  padding: 0;
+  width: 20px;
+  height: 30px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: #56b280;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.quantity-form__minus {
+  padding-left: 10px;
+  color: #a7a7a7;
+}
+
+.quantity-form__plus {
+  padding-right: 10px;
+}

@@ -8,9 +8,11 @@ const Input = (props) => {
         className={`input ${props.classes}`}
         type={props.type}
         placeholder={props.placeholder}
-        onChange={props.inputHandler}
+        name={props.name}
+        value={props.value}
+        onChange={props.onChange}
       />
-      <span className="error">{}</span>
+      <span className="error">{props.errorMessage}</span>
     </>
   );
 };

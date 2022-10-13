@@ -3,7 +3,10 @@ import "./Button.css";
 
 const Button = ({ children, ...props }) => {
   return (
-    <button {...props} className={`button ${props.buttonType} ${props.classes}`}>
+    <button
+      className={`button ${props.classes === undefined ? "" : props.classes}`}
+      {...props}
+    >
       {children}
     </button>
   );

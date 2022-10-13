@@ -7,17 +7,15 @@ import Login from "./components/Login";
 
 const App = () => {
   return (
-    <>
-      <div className="App">
-        <Router>
-          <Navbar />
-          <AppRouter />
-        </Router>
+    <div className="App">
+      <Router>
+        <Navbar />
+        <AppRouter />
         <Modal>
           <Login />
         </Modal>
-      </div>
-    </>
+      </Router>
+    </div>
   );
 };
 

@@ -7,6 +7,10 @@ import { Provider } from "react-redux";
 import allReducers from "./reducers";
 
 const store = createStore(allReducers);
+store.subscribe(() => {
+  console.log("state updated");
+  console.log(store.getState());
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

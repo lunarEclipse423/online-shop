@@ -11,7 +11,8 @@
   border: 0.5px solid #56b280;
 }
 
-.input::placeholder {
+.input::placeholder,
+.error {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -21,4 +22,5 @@
 }
 
 .error {
+  color: red;
 }

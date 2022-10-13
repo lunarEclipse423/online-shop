@@ -1,9 +1,15 @@
-const loggedReducer = (state = false, action) => {
+const initState = "unauthorized";
+
+const loggedReducer = (state = initState, action) => {
   switch (action.type) {
-    case "SIGN_IN":
-      return !state;
+    case "USER":
+      return "user";
+    case "ADMIN":
+      return "admin";
+    case "UNAUTHORIZED":
+      return "unauthorized";
     default:
-      return false;
+      return state;
   }
 };
 
