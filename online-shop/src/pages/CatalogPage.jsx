@@ -21,7 +21,7 @@ const CatalogPage = () => {
     } else {
       setProducts(productItems);
     }
-  }, []);
+  });
 
   return (
     <div className="catalog">
