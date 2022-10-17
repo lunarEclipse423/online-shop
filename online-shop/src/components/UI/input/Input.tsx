@@ -1,0 +1,32 @@
+import React from "react";
+import "./Input.css";
+
+type InputPropsType = {
+  classes?: string;
+  type: string;
+  placeholder: string;
+  name: string;
+  value: string | number;
+  onChange: (e: any) => void;
+  errorMessage: string | undefined;
+};
+
+const Input = (props: InputPropsType) => {
+  return (
+    <div className="input-wrapper">
+      <input
+        className={`input ${props.classes}`}
+        type={props.type}
+        placeholder={props.placeholder}
+        name={props.name}
+        value={props.value}
+        onChange={props.onChange}
+      />
+      <span className="error">
+        {props.errorMessage === undefined ? "" : props.errorMessage}
+      </span>
+    </div>
+  );
+};
+
+export default Input;
