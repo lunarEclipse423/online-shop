@@ -1,0 +1,228 @@
+.product-page {
+  padding: 122px 165px 114px;
+  font-family: "Poppins";
+  font-style: normal;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-image {
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candleaf-info {
+  margin-top: 17px;
+  padding: 0 30px 0;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: #272727;
+}
+
+.text-shipping {
+  margin-top: 20px;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: #56b280;
+}
+
+.product-info {
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info__short-details {
+  margin-bottom: 67px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product__title {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 58px;
+  letter-spacing: -0.9px;
+  color: #272727;
+}
+
+.product__price {
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 58px;
+  letter-spacing: -0.9px;
+  color: #56b280;
+}
+
+.product__available,
+.quantity__title {
+  margin-bottom: 5px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.9px;
+  color: #272727;
+}
+
+.product__quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.icon_cart_white {
+  width: 25px;
+  height: 24px;
+  display: inline-block;
+  background-image: url(../icons/icon_cart_white.svg);
+}
+
+.product__icon {
+  margin-right: 10px;
+}
+
+.product__description {
+  margin-top: 60px;
+  padding: 22px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #839a8e;
+  border: 1px solid #e6e6e6;
+  border-radius: 7px;
+}
+
+.description_bold {
+  color: #1d252c;
+}
+
+.product__button {
+  padding: 8px 93px;
+  align-self: flex-end;
+}
+
+.product__button:hover .icon_cart_white {
+  width: 24px;
+  height: 23px;
+  background-image: url(./../icons/icon_cart_green.svg);
+}
+
+.unauth__text {
+  padding: 8px 40px;
+  align-self: flex-end;
+  font-size: 20.6px;
+  line-height: 24px;
+}
+
+/* Quantity */
+.quantity__title {
+  margin-bottom: 8px;
+}
+
+.quantity-border {
+  width: 92px;
+  border: 1px solid #56b280;
+}
+
+.quantity-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.quantity-form__number {
+  width: 30px;
+  height: 30px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.9px;
+  color: #1d252c;
+  text-align: center;
+  border: none;
+}
+
+.quantity-form__plus,
+.quantity-form__minus {
+  padding: 0;
+  width: 20px;
+  height: 30px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: #56b280;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.quantity-form__minus {
+  padding-left: 10px;
+  color: #a7a7a7;
+}
+
+.quantity-form__plus {
+  padding-right: 10px;
+}
+
+.edit-buttons-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.edit__button {
+  margin-left: 20px;
+}
+
+.cancel_button {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.9px;
+  text-decoration-line: underline;
+  color: #56b280;
+  background: none;
+  border: 1px solid #fff;
+}
+
+.cancel_button:hover {
+  border: 1px solid #56b280;
+}
+
+.edit_input {
+  height: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #272727;
+}
+
+.quantity_input {
+  width: 80px;
+}
+
+.weight_input,
+.composition_input {
+  margin-top: 15px;
+}

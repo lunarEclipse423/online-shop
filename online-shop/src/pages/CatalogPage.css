@@ -1,0 +1,33 @@
+.catalog {
+  padding: 90px 165px 125px;
+}
+
+.catalog__title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: #0b254b;
+}
+
+.catalog__text {
+  margin-bottom: 60px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #5e6e89;
+}
+
+.catalog-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
