@@ -9,7 +9,6 @@ import "./CartItem.scss";
 const CartItem = ({ ...product }: CartType) => {
   const dispatch = useDispatch();
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
-
   const [currProductQuantity, setCurrProductQuantity] = useState(product.quantity);
   const imgBaseUrl =
     "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
@@ -32,8 +31,8 @@ const CartItem = ({ ...product }: CartType) => {
     dispatch(changeProductQuantity(product, newProductQuantity));
   };
 
-  const removeProductFromCart = (e: Event) => {
-    e.preventDefault();
+  const removeProductFromCart = (event: React.MouseEvent<HTMLElement>): void => {
+    event.preventDefault();
     dispatch(removeProduct(cartItems.find((el) => el.id === product.id)));
   };
 
@@ -61,7 +60,6 @@ const CartItem = ({ ...product }: CartType) => {
               type="button"
               value="-"
               className="quantity-form__minus"
-              // field="quantity"
               onClick={decrement}
             />
             <span className="quantity-form__number">{currProductQuantity}</span>
@@ -69,7 +67,6 @@ const CartItem = ({ ...product }: CartType) => {
               type="button"
               value="+"
               className="quantity-form__plus"
-              // field="quantity"
               onClick={increment}
             />
           </form>

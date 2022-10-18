@@ -49,16 +49,16 @@ const ProductPage = () => {
     );
   };
 
-  const inputHandler = (e: any) => {
-    const { name, value } = e.target;
+  const inputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
+    const { name, value } = event.currentTarget;
     setNewProductInfo({
       ...newProductInfo,
       [name]: name === "quantity" ? Number(value) : value,
     });
   };
 
-  const addToCart = (e: any) => {
-    e.preventDefault();
+  const addToCart = (event: React.MouseEvent<HTMLElement>): void => {
+    event.preventDefault();
     const finalProductQuantity = productQuantity;
     const totalPriceCalculated = calculateTotal(productItem.price, finalProductQuantity);
     const cartItem = cartItems.find((item) => item.id === productItem.id);
@@ -82,7 +82,6 @@ const ProductPage = () => {
         })
       );
     }
-
     setProductQuantity(1);
   };
 

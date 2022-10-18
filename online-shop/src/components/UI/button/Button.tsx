@@ -3,7 +3,7 @@ import "./Button.scss";
 
 type ButtonPropsType = {
   classes?: string;
-  onClick?: (e: any) => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
 const Button = ({

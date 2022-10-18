@@ -24,7 +24,7 @@ const Login = () => {
   const [errors, setErrors] = useState<LoginValuesType>(startValues);
   let loggedInRole = "";
 
-  const inputHandler = (event: React.FormEvent<HTMLInputElement>) => {
+  const inputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
     const { name, value } = event.currentTarget;
     setFormValues({ ...formValues, [name]: value });
   };
@@ -57,7 +57,7 @@ const Login = () => {
     );
   };
 
-  const login = (event: React.FormEvent<HTMLFormElement>) => {
+  const login = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     let currentErrors = validate(formValues);
     if (Object.keys(currentErrors).length !== 0) {
@@ -76,7 +76,7 @@ const Login = () => {
     });
   };
 
-  const cancel = (event: React.MouseEvent<HTMLElement>) => {
+  const cancel = (event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault();
     setFormValues(startValues);
     setErrors({});

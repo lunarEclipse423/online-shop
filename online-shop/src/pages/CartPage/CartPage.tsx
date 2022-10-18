@@ -14,8 +14,8 @@ const CartPage = () => {
 
   useMemo(() => setTotalPrice(calculateCartSum(cartItems)), [cartItems]);
 
-  const removeAllFromCart = (e: any) => {
-    e.preventDefault();
+  const removeAllFromCart = (event: React.MouseEvent<HTMLElement>): void => {
+    event.preventDefault();
     dispatch(clearCart());
   };
 
