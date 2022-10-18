@@ -1,8 +1,8 @@
-import AboutShopPage from "../pages/AboutShopPage";
-import CartPage from "../pages/CartPage";
-import CatalogPage from "../pages/CatalogPage";
-import ErrorPage from "../pages/ErrorPage";
-import ProductPage from "../pages/ProductPage";
+import AboutShopPage from "../pages/AboutShopPage/AboutShopPage";
+import CartPage from "../pages/CartPage/CartPage";
+import CatalogPage from "../pages/CatalogPage/CatalogPage";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ProductPage from "../pages/ProductPage/ProductPage";
 
 export const routes = [
   { path: "/catalog", element: CatalogPage },

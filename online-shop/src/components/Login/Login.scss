@@ -1,6 +1,6 @@
-@import "../sass/abstract/constants";
-@import "../sass/abstract/placeholders";
-@import "../sass/abstract/mixins";
+@import "../../sass/abstract/constants";
+@import "../../sass/abstract/placeholders";
+@import "../../sass/abstract/mixins";
 
 .login-form {
   position: relative;
@@ -15,7 +15,7 @@
   width: 69px;
   height: 70px;
   display: inline-block;
-  background-image: url(../icons/icon_login-logo.svg);
+  background-image: url(../../icons/icon_login-logo.svg);
 }
 
 .cross-icon-wrapper {
@@ -29,7 +29,7 @@
   width: 24px;
   height: 24px;
   display: inline-block;
-  background-image: url(../icons/icon_cross.svg);
+  background-image: url(../../icons/icon_cross.svg);
 }
 
 .login__title {

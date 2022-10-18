@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeProduct, changeProductQuantity } from "../store/actions/cart";
-import { useTypedSelector } from "../hooks/storeHooks";
-import { CartType } from "../types/cart";
-import Button from "./UI/button/Button";
+import { removeProduct, changeProductQuantity } from "../../store/actions/cart";
+import { useTypedSelector } from "../../hooks/storeHooks";
+import { CartType } from "../../types/cart";
+import Button from "../UI/button/Button";
 import "./CartItem.scss";
 
 const CartItem = ({ ...product }: CartType) => {

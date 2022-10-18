@@ -1,10 +1,10 @@
 import React, { useState, useMemo } from "react";
 import { useDispatch } from "react-redux";
-import { clearCart } from "../store/actions/cart";
-import { calculateCartSum } from "../utils/calculateCartSum";
-import { useTypedSelector } from "../hooks/storeHooks";
-import Button from "../components/UI/button/Button";
-import CartItem from "../components/CartItem";
+import { clearCart } from "../../store/actions/cart";
+import { calculateCartSum } from "../../utils/calculateCartSum";
+import { useTypedSelector } from "../../hooks/storeHooks";
+import Button from "../../components/UI/button/Button";
+import CartItem from "../../components/CartItem/CartItem";
 import "./CartPage.scss";
 
 const CartPage = () => {

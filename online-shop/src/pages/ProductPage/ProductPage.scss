@@ -1,6 +1,6 @@
-@import "../sass/abstract/constants";
-@import "../sass/abstract/placeholders";
-@import "../sass/abstract/mixins";
+@import "../../sass/abstract/constants";
+@import "../../sass/abstract/placeholders";
+@import "../../sass/abstract/mixins";
 
 .product-page {
   padding: 122px 165px 114px;
@@ -81,7 +81,7 @@
   width: 25px;
   height: 24px;
   display: inline-block;
-  background-image: url(../icons/icon_cart_white.svg);
+  background-image: url(../../icons/icon_cart_white.svg);
 }
 
 .product__icon {
@@ -109,7 +109,7 @@
 .product__button:hover .icon_cart_white {
   width: 24px;
   height: 23px;
-  background-image: url(./../icons/icon_cart_green.svg);
+  background-image: url(./../../icons/icon_cart_green.svg);
 }
 
 .unauth__text {

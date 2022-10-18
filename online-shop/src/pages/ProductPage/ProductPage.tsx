@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addProduct, changeProductQuantity } from "../store/actions/cart";
-import { editProduct } from "../store/actions/products";
-import { calculateTotal } from "../utils/calculateTotal";
-import { useTypedSelector } from "../hooks/storeHooks";
-import Input from "../components/UI/input/Input";
-import Textarea from "../components/UI/textarea/Textarea";
-import Button from "../components/UI/button/Button";
+import { addProduct, changeProductQuantity } from "../../store/actions/cart";
+import { editProduct } from "../../store/actions/products";
+import { calculateTotal } from "../../utils/calculateTotal";
+import { useTypedSelector } from "../../hooks/storeHooks";
+import Input from "../../components/UI/input/Input";
+import Textarea from "../../components/UI/textarea/Textarea";
+import Button from "../../components/UI/button/Button";
 import "./ProductPage.scss";
 
 type ErrorValuesType = {

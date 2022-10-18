@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser, loginAdmin } from "../store/actions/login";
-import { deactivateModal } from "../store/actions/modal";
-import { getAllUsers } from "../api/ShopService";
-import Button from "./UI/button/Button";
-import Input from "./UI/input/Input";
+import { loginUser, loginAdmin } from "../../store/actions/login";
+import { deactivateModal } from "../../store/actions/modal";
+import { getAllUsers } from "../../api/ShopService";
+import Button from "../UI/button/Button";
+import Input from "../UI/input/Input";
 import "./Login.scss";
 
 type LoginValuesType = {
