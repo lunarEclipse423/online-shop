@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/UI/button/Button";
-import "./ErrorPage.css";
+import "./ErrorPage.scss";
 
 const ErrorPage = () => {
   return (

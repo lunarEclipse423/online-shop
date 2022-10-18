@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./CatalogItem.css";
+import "./CatalogItem.scss";
 
 // add type for product (catalog item type or smth)
 const CatalogItem = ({ ...product }) => {

@@ -1,7 +1,10 @@
+@import "../sass/abstract/constants";
+@import "../sass/abstract/placeholders";
+@import "../sass/abstract/mixins";
+
 .product-page {
   padding: 122px 165px 114px;
-  font-family: "Poppins";
-  font-style: normal;
+  @extend %font-primary;
   display: flex;
   justify-content: space-between;
 }
@@ -16,23 +19,19 @@
 .candleaf-info {
   margin-top: 17px;
   padding: 0 30px 0;
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 26px;
+  @include font(2.2rem, 2.6rem);
   text-align: center;
   letter-spacing: -0.9px;
-  color: #272727;
+  color: $color-text-primary;
 }
 
 .text-shipping {
   margin-top: 20px;
-  font-family: "Roboto";
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(2rem, 2.6rem, 700);
   text-align: center;
   letter-spacing: -0.9px;
-  color: #56b280;
+  color: $color-primary;
 }
 
 .product-info {
@@ -52,7 +51,7 @@
   font-size: 26px;
   line-height: 58px;
   letter-spacing: -0.9px;
-  color: #272727;
+  color: $color-text-primary;
 }
 
 .product__price {
@@ -60,18 +59,16 @@
   font-size: 26px;
   line-height: 58px;
   letter-spacing: -0.9px;
-  color: #56b280;
+  color: $color-primary;
 }
 
 .product__available,
 .quantity__title {
   margin-bottom: 5px;
-  font-family: "Roboto";
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
   letter-spacing: -0.9px;
-  color: #272727;
+  color: $color-text-primary;
 }
 
 .product__quantity {
@@ -94,16 +91,14 @@
 .product__description {
   margin-top: 60px;
   padding: 22px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 26px;
-  color: #839a8e;
-  border: 1px solid #e6e6e6;
+  @include font(1.6rem, 2.6rem, 400);
+  color: $color-product-description;
+  border: 1px solid $color-product-description-border;
   border-radius: 7px;
 }
 
 .description_bold {
-  color: #1d252c;
+  color: $color-product-description-bold;
 }
 
 .product__button {
@@ -120,8 +115,7 @@
 .unauth__text {
   padding: 8px 40px;
   align-self: flex-end;
-  font-size: 20.6px;
-  line-height: 24px;
+  @include font(2.06rem, 2.4rem);
 }
 
 /* Quantity */
@@ -131,7 +125,7 @@
 
 .quantity-border {
   width: 92px;
-  border: 1px solid #56b280;
+  border: 1px solid $color-primary;
 }
 
 .quantity-form {
@@ -143,13 +137,10 @@
 .quantity-form__number {
   width: 30px;
   height: 30px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
   letter-spacing: -0.9px;
-  color: #1d252c;
+  color: $color-quantity-number;
   text-align: center;
   border: none;
 }
@@ -159,14 +150,11 @@
   padding: 0;
   width: 20px;
   height: 30px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
   text-align: center;
   letter-spacing: -0.9px;
-  color: #56b280;
+  color: $color-primary;
   background: none;
   border: none;
   cursor: pointer;
@@ -174,7 +162,7 @@
 
 .quantity-form__minus {
   padding-left: 10px;
-  color: #a7a7a7;
+  color: $color-quantity-minus;
 }
 
 .quantity-form__plus {
@@ -192,30 +180,24 @@
 }
 
 .cancel_button {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
   letter-spacing: -0.9px;
   text-decoration-line: underline;
-  color: #56b280;
+  color: $color-primary;
   background: none;
-  border: 1px solid #fff;
+  border: 1px solid $color-light;
 }
 
 .cancel_button:hover {
-  border: 1px solid #56b280;
+  border: 1px solid $color-primary;
 }
 
 .edit_input {
   height: 30px;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 26px;
-  color: #272727;
+  @extend %font-primary;
+  @include font(1.4rem, 2.6rem, 400);
+  color: $color-text-primary;
 }
 
 .quantity_input {

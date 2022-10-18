@@ -1,13 +1,14 @@
+@import "../sass/abstract/constants";
+@import "../sass/abstract/placeholders";
+@import "../sass/abstract/mixins";
+
 .cart-item {
   margin-bottom: 30px;
   display: flex;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(1.6rem, 2.6rem);
   letter-spacing: -0.9px;
-  color: #272727;
+  color: $color-text-primary;
 }
 
 .cart-item:last-child {
@@ -39,31 +40,25 @@
 }
 
 .cart-item__title {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 58px;
+  @extend %font-primary;
+  @include font(2.6rem, 5.8rem);
   letter-spacing: -0.9px;
-  color: #272727;
+  color: $color-text-primary;
 }
 
 .remove_button {
   padding: 8px 0;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
   letter-spacing: -0.9px;
   text-decoration-line: underline;
-  color: #56b280;
+  color: $color-primary;
   background: none;
-  border: 1px solid #fff;
+  border: 1px solid $color-light;
 }
 
 .remove_button:hover {
-  color: #272727;
+  color: $color-text-primary;
 }
 
 .cart-item-quantity-wrapper {
@@ -75,7 +70,7 @@
   position: absolute;
   right: -20px;
   width: 92px;
-  border: 1px solid #56b280;
+  border: 1px solid $color-primary;
 }
 
 .quantity-form {
@@ -87,13 +82,10 @@
 .quantity-form__number {
   width: 30px;
   height: 30px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
   letter-spacing: -0.9px;
-  color: #1d252c;
+  color: $color-quantity-number;
   text-align: center;
   border: none;
 }
@@ -103,14 +95,11 @@
   padding: 0;
   width: 20px;
   height: 30px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
   text-align: center;
   letter-spacing: -0.9px;
-  color: #56b280;
+  color: $color-primary;
   background: none;
   border: none;
   cursor: pointer;
@@ -118,7 +107,7 @@
 
 .quantity-form__minus {
   padding-left: 10px;
-  color: #a7a7a7;
+  color: $color-quantity-minus;
 }
 
 .quantity-form__plus {

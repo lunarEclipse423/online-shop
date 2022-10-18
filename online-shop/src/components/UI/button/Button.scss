@@ -1,0 +1,23 @@
+@import "../../../sass/abstract/constants";
+@import "../../../sass/abstract/placeholders";
+@import "../../../sass/abstract/mixins";
+
+.button {
+  padding: 8px 44px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  @extend %font-secondary;
+  @include font(2.06rem, 2.4rem);
+  color: $color-light;
+  background: $color-primary;
+  border-radius: 4px;
+  border: 1px solid $color-primary;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: $color-primary;
+  background: $color-light;
+  border-radius: 4px;
+}

@@ -1,3 +1,5 @@
+@import "../../../sass/abstract/constants";
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -7,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: $color-modal-background;
   z-index: 4;
   transform: scale(0);
 }
@@ -19,5 +21,5 @@
 .modal__content {
   padding: 30px;
   border-radius: 12px;
-  background-color: white;
+  background-color: $color-light;
 }

@@ -1,3 +1,7 @@
+@import "../sass/abstract/constants";
+@import "../sass/abstract/placeholders";
+@import "../sass/abstract/mixins";
+
 .login-form {
   position: relative;
 }
@@ -31,13 +35,10 @@
 .login__title {
   margin-top: 12px;
   margin-bottom: 30px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(2rem, 2.6rem);
   letter-spacing: -0.9px;
-  color: #272727;
+  color: $color-text-primary;
   text-align: center;
 }
 
@@ -61,18 +62,15 @@
 }
 
 .cancel_button {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
   letter-spacing: -0.9px;
   text-decoration-line: underline;
-  color: #56b280;
+  color: $color-primary;
   background: none;
-  border: 1px solid #fff;
+  border: 1px solid $color-light;
 }
 
 .cancel_button:hover {
-  border: 1px solid #56b280;
+  border: 1px solid $color-primary;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Input.css";
+import "./Input.scss";
 
 type InputPropsType = {
   classes?: string;

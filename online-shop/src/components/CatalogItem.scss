@@ -1,0 +1,35 @@
+@import "../sass/abstract/constants";
+@import "../sass/abstract/placeholders";
+@import "../sass/abstract/mixins";
+
+.catalog-item {
+  box-shadow: 0 1px 2px $color-catalog-item-box-shadow;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.catalog-item:hover {
+  box-shadow: 0 5px 15px $color-catalog-item-box-shadow-hover;
+}
+
+.item-text {
+  padding: 10px 26px 16px;
+  display: flex;
+  flex-direction: column;
+  background: $color-light;
+}
+
+.item-title {
+  @extend %font-primary;
+  @include font(1.6rem, 2.8rem);
+  letter-spacing: -0.9px;
+  text-align: left;
+  color: $color-catalog-item-title;
+}
+
+.item-price {
+  @extend %font-secondary;
+  @include font(2rem, 2.8rem);
+  text-align: right;
+  color: $color-primary;
+}

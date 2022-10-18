@@ -1,7 +1,7 @@
 import React from "react";
-import "./modal.css";
 import { useSelector } from "react-redux";
 import { useTypedSelector } from "../../../hooks/storeHooks";
+import "./Modal.scss";
 
 type Props = {
   children: JSX.Element;

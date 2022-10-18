@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { activateModal } from "../../../store/actions/modal";
 import { logout } from "../../../store/actions/login";
 import { useTypedSelector } from "../../../hooks/storeHooks";
-import "./Navbar.css";
+import "./Navbar.scss";
 
 const Navbar = () => {
   const navigate = useNavigate();

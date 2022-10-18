@@ -7,8 +7,8 @@ import { calculateTotal } from "../utils/calculateTotal";
 import Input from "../components/UI/input/Input";
 import Textarea from "../components/UI/textarea/Textarea";
 import Button from "../components/UI/button/Button";
-import "./ProductPage.css";
 import { useTypedSelector } from "../hooks/storeHooks";
+import "./ProductPage.scss";
 
 type ErrorValuesType = {
   title?: string;

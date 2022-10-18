@@ -1,14 +1,15 @@
+@import "../../../sass/abstract/constants";
+@import "../../../sass/abstract/placeholders";
+@import "../../../sass/abstract/mixins";
+
 .navbar {
   position: fixed;
   padding: 20px 170px 20px 165px;
   width: 100%;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  color: #272727;
-  background: #ffffff;
+  @extend %font-secondary;
+  @include font(1.6rem, 1.9rem);
+  color: $color-navbar-text;
+  background: $color-light;
   z-index: 3;
 }
 
@@ -33,12 +34,9 @@
 }
 
 .logo__text {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 38px;
-  color: #56b280;
+  @extend %font-primary;
+  @include font(2rem, 3.8rem, 600);
+  color: $color-primary;
 }
 
 .navbar__links {
@@ -53,12 +51,12 @@
 }
 
 .navigation__link {
-  color: #272727;
+  color: $color-navbar-text;
   text-decoration: none;
 }
 
 .navigation__link:hover {
-  color: #56b280;
+  color: $color-primary;
 }
 
 .tools {
@@ -81,25 +79,22 @@
 }
 
 .cart-items-indicator {
-  width: 13px;
-  height: 13px;
   position: absolute;
   right: -3px;
   top: -3px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 12px;
+  width: 13px;
+  height: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
+  @extend %font-secondary;
+  @include font(1rem, 1.2rem);
   border-radius: 50%;
-  color: #fff;
-  background: #56b280;
+  color: $color-light;
+  background: $color-primary;
 }
 
-/* ICONS */
+// ICONS
 
 .icon_logo {
   width: 35px;

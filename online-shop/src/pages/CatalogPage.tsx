@@ -4,8 +4,8 @@ import CatalogItem from "../components/CatalogItem";
 import { getAllProducts } from "../api/ShopService";
 import { firstEntry } from "../store/actions/entry";
 import { fetchProducts } from "../store/actions/products";
-import "./CatalogPage.css";
 import { useTypedSelector } from "../hooks/storeHooks";
+import "./CatalogPage.scss";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();

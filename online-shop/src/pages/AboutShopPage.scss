@@ -1,39 +1,38 @@
+@import "../sass/abstract/constants";
+@import "../sass/abstract/placeholders";
+@import "../sass/abstract/mixins";
+
 .about-shop-page {
   padding: 175px 355px 110px;
-  background-image: url(../img/bg.jpg);
-  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-image: url(../img/bg.jpg);
+  background-size: cover;
 }
 
 .about-shop-content {
   padding: 33px 96px 63px;
-  background: rgba(247, 248, 250, 0.8);
-  backdrop-filter: blur(12px);
-  border-radius: 2px;
-  font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @extend %font-primary;
+  background: $color-about-shop-background;
+  backdrop-filter: blur(12px);
+  border-radius: 2px;
 }
 
 .about-shop__title {
   margin: 0;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 58px;
-  color: #1d252c;
+  @include font(4rem, 5.8rem);
+  color: $color-about-shop-title;
 }
 
 .about-shop__text {
   margin-bottom: 45px;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
+  @include font(1.8rem, 2.6rem, 400);
 }
 
 .about-shop__link {

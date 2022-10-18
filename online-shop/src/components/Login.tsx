@@ -6,7 +6,7 @@ import { deactivateModal } from "../store/actions/modal";
 import { getAllUsers } from "../api/ShopService";
 import Button from "./UI/button/Button";
 import Input from "./UI/input/Input";
-import "./Login.css";
+import "./Login.scss";
 
 type StartLoginValuesType = {
   username?: string;
