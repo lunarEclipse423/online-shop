@@ -8,7 +8,7 @@ import Button from "./UI/button/Button";
 import Input from "./UI/input/Input";
 import "./Login.scss";
 
-type StartLoginValuesType = {
+type LoginValuesType = {
   username?: string;
   password?: string;
 };
@@ -21,25 +21,25 @@ const Login = () => {
     password: "",
   };
   const [formValues, setFormValues] = useState(startValues);
-  const [errors, setErrors] = useState<StartLoginValuesType>(startValues);
+  const [errors, setErrors] = useState<LoginValuesType>(startValues);
   let loggedInRole = "";
 
-  const inputHandler = (e: any) => {
-    const { name, value } = e.target;
+  const inputHandler = (event: React.FormEvent<HTMLInputElement>) => {
+    const { name, value } = event.currentTarget;
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const validate = (values: any) => {
+  const validate = (values: LoginValuesType) => {
     const errors = Object.assign({}, startValues);
     for (let key in values) {
-      if (!values[key]) {
+      if (!values[key as keyof typeof values]) {
         errors[key as keyof typeof errors] = "Field is empty. Please, fill in";
       }
     }
     return errors.username === "" && errors.password === "" ? {} : errors;
   };
 
-  const auth = async (values: any) => {
+  const auth = async (values: LoginValuesType) => {
     return new Promise((resolve) =>
       setTimeout(async () => {
         const errors = Object.assign({}, startValues);
@@ -57,10 +57,9 @@ const Login = () => {
     );
   };
 
-  const login = (e: any) => {
-    e.preventDefault();
+  const login = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     let currentErrors = validate(formValues);
-    // here logic now is different
     if (Object.keys(currentErrors).length !== 0) {
       setErrors(currentErrors);
       return;
@@ -77,8 +76,8 @@ const Login = () => {
     });
   };
 
-  const cancel = (e: any) => {
-    e.preventDefault();
+  const cancel = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
     setFormValues(startValues);
     setErrors({});
     dispatch(deactivateModal());

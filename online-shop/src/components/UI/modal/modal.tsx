@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { useTypedSelector } from "../../../hooks/storeHooks";
 import "./Modal.scss";
 
@@ -8,7 +7,6 @@ type Props = {
 };
 
 const Modal = ({ children }: Props) => {
-  // const isModal = useSelector((state) => state.isModal);
   const isModal = useTypedSelector((state) => state.isModal);
 
   return (

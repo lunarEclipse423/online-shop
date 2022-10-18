@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { activateModal } from "../../../store/actions/modal";
 import { logout } from "../../../store/actions/login";
 import { useTypedSelector } from "../../../hooks/storeHooks";
@@ -9,9 +9,7 @@ import "./Navbar.scss";
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const isLogged = useSelector((state) => state.isLogged);
   const isLogged = useTypedSelector((state) => state.isLogged);
-  // const cartItemsCount = useSelector((state) => state.manageCartItems.cartItems.length);
   const cartItemsCount = useTypedSelector(
     (state) => state.manageCartItems.cartItems.length
   );

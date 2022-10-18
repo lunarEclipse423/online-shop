@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeProduct, changeProductQuantity } from "../store/actions/cart";
 import { useTypedSelector } from "../hooks/storeHooks";
 import { CartType } from "../types/cart";
@@ -8,7 +8,6 @@ import "./CartItem.scss";
 
 const CartItem = ({ ...product }: CartType) => {
   const dispatch = useDispatch();
-  // const cartItems = useSelector((state) => state.manageCartItems.cartItems);
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
 
   const [currProductQuantity, setCurrProductQuantity] = useState(product.quantity);
@@ -33,7 +32,7 @@ const CartItem = ({ ...product }: CartType) => {
     dispatch(changeProductQuantity(product, newProductQuantity));
   };
 
-  const removeProductFromCart = (e: any) => {
+  const removeProductFromCart = (e: Event) => {
     e.preventDefault();
     dispatch(removeProduct(cartItems.find((el) => el.id === product.id)));
   };

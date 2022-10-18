@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProduct, changeProductQuantity } from "../store/actions/cart";
 import { editProduct } from "../store/actions/products";
 import { calculateTotal } from "../utils/calculateTotal";
+import { useTypedSelector } from "../hooks/storeHooks";
 import Input from "../components/UI/input/Input";
 import Textarea from "../components/UI/textarea/Textarea";
 import Button from "../components/UI/button/Button";
-import { useTypedSelector } from "../hooks/storeHooks";
 import "./ProductPage.scss";
 
 type ErrorValuesType = {
@@ -21,13 +21,8 @@ type ErrorValuesType = {
 const ProductPage = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  // const isLogged = useSelector((state) => state.isLogged);
   const isLogged = useTypedSelector((state) => state.isLogged);
-  // const cartItems = useSelector((state) => state.manageCartItems.cartItems);
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
-  // const productItem = useSelector((state) =>
-  //   state.manageProducts.products.find((el) => el.id === location.state.product.id)
-  // );
   const productItem = useTypedSelector((state) =>
     state.manageProducts.products.find((el) => el.id === location.state.product.id)
   );

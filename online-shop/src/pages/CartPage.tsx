@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { clearCart } from "../store/actions/cart";
 import { calculateCartSum } from "../utils/calculateCartSum";
 import { useTypedSelector } from "../hooks/storeHooks";
@@ -9,7 +9,6 @@ import "./CartPage.scss";
 
 const CartPage = () => {
   const dispatch = useDispatch();
-  // const cartItems = useSelector((state) => state.manageCartItems.cartItems);
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
   const [totalPrice, setTotalPrice] = useState(calculateCartSum(cartItems));
 
