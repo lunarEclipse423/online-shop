@@ -3,51 +3,48 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addProduct, changeProductQuantity } from "../../store/actions/cart";
 import { editProduct } from "../../store/actions/products";
+import { validateProductInfo } from "../../utils/validateProductInfo";
 import { calculateTotal } from "../../utils/calculateTotal";
 import { useTypedSelector } from "../../hooks/storeHooks";
+import { ErrorsProductType } from "../../types/products";
 import Input from "../../components/UI/input/Input";
 import Textarea from "../../components/UI/textarea/Textarea";
 import Button from "../../components/UI/button/Button";
 import "./ProductPage.scss";
 
-type ErrorValuesType = {
-  title?: string;
-  description?: string;
-  weight?: string;
-  composition?: string;
-  quantity?: string;
-};
-
 const ProductPage = () => {
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const isLogged = useTypedSelector((state) => state.isLogged);
-  const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
-  const productItem = location.state.product;
-  const [productQuantity, setProductQuantity] = useState(1);
-  const [isEditing, setIsEditing] = useState(false);
-  const [newProductInfo, setNewProductInfo] = useState(productItem);
-  const [errors, setErrors] = useState<ErrorValuesType>({
+  const imgBaseUrl =
+    "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
+  const initialErrorsValue: ErrorsProductType = {
     title: "",
     description: "",
     weight: "",
     composition: "",
     quantity: "",
-  });
-  const imgBaseUrl =
-    "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
+  };
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const isLogged = useTypedSelector((state) => state.isLogged);
+  const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
+  const [productItem, setProductItem] = useState(location.state.product);
+  const [productQuantity, setProductQuantity] = useState(1);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newProductInfo, setNewProductInfo] = useState(productItem);
+  const [errors, setErrors] = useState<ErrorsProductType>(initialErrorsValue);
 
-  const decrement = () => {
+  const decrement = (): void => {
     setProductQuantity(productQuantity === 1 ? productQuantity : productQuantity - 1);
   };
 
-  const increment = () => {
+  const increment = (): void => {
     setProductQuantity(
       productQuantity === productItem.quantity ? productQuantity : productQuantity + 1
     );
   };
 
-  const inputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
+  const inputHandler = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): void => {
     const { name, value } = event.currentTarget;
     setNewProductInfo({
       ...newProductInfo,
@@ -70,88 +67,35 @@ const ProductPage = () => {
     } else {
       dispatch(
         addProduct({
-          id: productItem.id,
-          name: productItem.title,
-          price: productItem.price,
+          ...productItem,
           quantity: finalProductQuantity,
           totalPrice: totalPriceCalculated,
-          cartImage: productItem.cartImage,
-          quantityInStock: productItem.quantity,
         })
       );
     }
     setProductQuantity(1);
   };
 
-  const validate = (values: any) => {
-    const errors = {
-      title: "",
-      description: "",
-      weight: "",
-      composition: "",
-      quantity: "",
-    };
-
-    for (let key in values) {
-      if (!values[key]) {
-        errors[key as keyof typeof errors] = "Field is empty. Please, fill in";
-      }
-    }
-
-    if (values.quantity) {
-      if (values.quantity < 0) {
-        errors.quantity = "Product quantity cannot be negative";
-      }
-    }
-
-    const shortInputs = ["title", "weight", "quantity"];
-    shortInputs.forEach((key) => {
-      if (values[key]) {
-        if (values[key].length > 30) {
-          errors[key as keyof typeof errors] =
-            "Entry must be no longer than 30 characters";
-        }
-      }
-    });
-
-    if (values.composition) {
-      if (values.composition.length > 100) {
-        errors.composition = "Entry must be no longer than 100 characters";
-      }
-    }
-
-    if (values.description) {
-      if (values.description.length > 600) {
-        errors.description = "Entry must be no longer than 600 characters";
-      }
-    }
-
-    for (let key in errors) {
-      if (errors[key as keyof typeof errors] !== "") {
-        return errors;
-      }
-    }
-
-    return {};
+  const editProductInfo = (): void => {
+    setIsEditing(!isEditing);
+    setErrors(initialErrorsValue);
   };
 
-  const cancelChanges = () => {
+  const cancelChanges = (): void => {
     editProductInfo();
     setNewProductInfo(productItem);
   };
 
-  const editProductInfo = () => {
-    setIsEditing(!isEditing);
-    setErrors({});
-  };
-
-  const saveChanges = () => {
-    const currErrors = validate(newProductInfo);
-    if (Object.keys(currErrors).length !== 0) {
-      setErrors(currErrors);
-      return;
+  const saveChanges = (): void => {
+    const errors = validateProductInfo(newProductInfo);
+    for (let key in errors) {
+      if (errors[key] !== "") {
+        setErrors(errors);
+        return;
+      }
     }
     dispatch(editProduct(newProductInfo));
+    setProductItem(newProductInfo);
     editProductInfo();
   };
 
@@ -255,7 +199,6 @@ const ProductPage = () => {
                     type="button"
                     value="-"
                     className="quantity-form__minus"
-                    // field="quantity"
                     onClick={decrement}
                   />
                   <span className="quantity-form__number">{productQuantity}</span>
@@ -263,7 +206,6 @@ const ProductPage = () => {
                     type="button"
                     value="+"
                     className="quantity-form__plus"
-                    // field="quantity"
                     onClick={increment}
                   />
                 </form>

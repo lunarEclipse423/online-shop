@@ -17,9 +17,27 @@ export type ProductType = {
   cartImage: string;
 };
 
+export type EditProductType = {
+  [key: string]: number | string;
+  title: string;
+  description: string;
+  weight: string;
+  composition: string;
+  quantity: number;
+};
+
+export type ErrorsProductType = {
+  [key: string]: string;
+  title: string;
+  description: string;
+  weight: string;
+  composition: string;
+  quantity: string;
+};
+
 interface FetchProductsAction {
   type: ProductsActionTypes.FETCH_PRODUCTS;
-  products: any[];
+  products: ProductType[];
 }
 
 interface EditProductAction {
@@ -30,5 +48,5 @@ interface EditProductAction {
 export type ProductsAction = FetchProductsAction | EditProductAction;
 
 export interface ProductsState {
-  products: any[];
+  products: ProductType[];
 }

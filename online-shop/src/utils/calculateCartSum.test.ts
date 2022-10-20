@@ -5,7 +5,7 @@ describe("Value validation", () => {
     const cart = [
       {
         id: 1,
-        name: "Lamp",
+        title: "Lamp",
         price: 30,
         quantity: 1,
         totalPrice: 30,
@@ -14,7 +14,7 @@ describe("Value validation", () => {
       },
       {
         id: 2,
-        name: "Socks",
+        title: "Socks",
         price: 12,
         quantity: 1,
         totalPrice: 12,
@@ -23,7 +23,7 @@ describe("Value validation", () => {
       },
       {
         id: 3,
-        name: "Toy",
+        title: "Toy",
         price: 10,
         quantity: 1,
         totalPrice: 10,
@@ -40,7 +40,7 @@ describe("Value validation", () => {
     const cart = [
       {
         id: 1,
-        name: "Lamp",
+        title: "Lamp",
         price: 3.99,
         quantity: 3,
         totalPrice: 11.97,
@@ -49,7 +49,7 @@ describe("Value validation", () => {
       },
       {
         id: 2,
-        name: "Socks",
+        title: "Socks",
         price: 4.99,
         quantity: 2,
         totalPrice: 9.98,

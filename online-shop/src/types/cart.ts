@@ -8,7 +8,7 @@ export enum CartActionTypes {
 export type CartType = {
   [key: string]: number | string;
   id: number;
-  name: string;
+  title: string;
   price: number;
   quantity: number;
   totalPrice: number;

@@ -7,7 +7,9 @@ type InputPropsType = {
   placeholder: string;
   name: string;
   value: string | number;
-  onChange: (e: any) => void;
+  onChange:
+    | ((event: React.FormEvent<HTMLInputElement>) => void)
+    | ((event: React.ChangeEvent<HTMLInputElement>) => void);
   errorMessage: string | undefined;
 };
 

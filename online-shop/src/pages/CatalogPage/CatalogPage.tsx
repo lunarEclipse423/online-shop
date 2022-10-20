@@ -4,6 +4,7 @@ import { getAllProducts } from "../../api/ShopService";
 import { firstEntry } from "../../store/actions/entry";
 import { fetchProducts } from "../../store/actions/products";
 import { useTypedSelector } from "../../hooks/storeHooks";
+import { ProductType } from "../../types/products";
 import CatalogItem from "../../components/CatalogItem/CatalogItem";
 import "./CatalogPage.scss";
 
@@ -11,7 +12,7 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   const productItems = useTypedSelector((state) => state.manageProducts.products);
   const entry = useTypedSelector((state) => state.firtEntry);
-  const [products, setProducts] = useState<any[] | null>(null);
+  const [products, setProducts] = useState<ProductType[] | null>(null);
 
   useEffect(() => {
     if (entry) {

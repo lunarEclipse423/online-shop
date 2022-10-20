@@ -4,14 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { loginUser, loginAdmin } from "../../store/actions/login";
 import { deactivateModal } from "../../store/actions/modal";
 import { getAllUsers } from "../../api/ShopService";
+import { UserType } from "../../types/user";
+import { LoginType } from "../../types/login";
 import Button from "../UI/button/Button";
 import Input from "../UI/input/Input";
 import "./Login.scss";
-
-type LoginValuesType = {
-  username?: string;
-  password?: string;
-};
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,7 +18,7 @@ const Login = () => {
     password: "",
   };
   const [formValues, setFormValues] = useState(startValues);
-  const [errors, setErrors] = useState<LoginValuesType>(startValues);
+  const [errors, setErrors] = useState<LoginType>(startValues);
   let loggedInRole = "";
 
   const inputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
@@ -29,22 +26,22 @@ const Login = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const validate = (values: LoginValuesType) => {
-    const errors = Object.assign({}, startValues);
+  const validate = (values: LoginType) => {
+    const errors: LoginType = startValues;
     for (let key in values) {
-      if (!values[key as keyof typeof values]) {
-        errors[key as keyof typeof errors] = "Field is empty. Please, fill in";
+      if (!values[key]) {
+        errors[key] = "Field is empty. Please, fill in";
       }
     }
-    return errors.username === "" && errors.password === "" ? {} : errors;
+    return errors;
   };
 
-  const auth = async (values: LoginValuesType) => {
+  const auth = async (values: LoginType): Promise<LoginType> => {
     return new Promise((resolve) =>
       setTimeout(async () => {
-        const errors = Object.assign({}, startValues);
-        const users = await getAllUsers();
-        users.forEach((user: any) => {
+        const errors: LoginType = startValues;
+        const users = await getAllUsers<UserType[]>();
+        users.forEach((user: UserType) => {
           if (values.username === user.username && values.password === user.password) {
             loggedInRole = user.role;
           }
@@ -52,7 +49,7 @@ const Login = () => {
         if (!loggedInRole) {
           errors["password"] = "This user doesnt exist";
         }
-        resolve(errors.username === "" && errors.password === "" ? {} : errors);
+        resolve(errors);
       }, 1000)
     );
   };
@@ -60,26 +57,32 @@ const Login = () => {
   const login = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     let currentErrors = validate(formValues);
-    if (Object.keys(currentErrors).length !== 0) {
-      setErrors(currentErrors);
-      return;
-    }
-    auth(formValues).then((res: any) => {
-      currentErrors = res;
-      setErrors(res);
-      if (Object.keys(currentErrors).length === 0) {
-        dispatch(deactivateModal());
-        dispatch(loggedInRole === "user" ? loginUser() : loginAdmin());
-        setFormValues(startValues);
-        navigate("/catalog");
+    for (let key in currentErrors) {
+      if (currentErrors[key] !== "") {
+        setErrors(currentErrors);
+        return;
       }
+    }
+    auth(formValues).then((res: LoginType) => {
+      currentErrors = res;
+      for (let key in currentErrors) {
+        if (currentErrors[key] !== "") {
+          setErrors(currentErrors);
+          return;
+        }
+      }
+      setFormValues(startValues);
+      setErrors(startValues);
+      dispatch(deactivateModal());
+      dispatch(loggedInRole === "user" ? loginUser() : loginAdmin());
+      navigate("/catalog");
     });
   };
 
   const cancel = (event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault();
     setFormValues(startValues);
-    setErrors({});
+    setErrors(startValues);
     dispatch(deactivateModal());
   };
 

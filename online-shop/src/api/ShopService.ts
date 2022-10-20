@@ -10,7 +10,7 @@ export const getProductById = async (id: number) => {
   return response.json();
 };
 
-export const getAllUsers = async () => {
+export const getAllUsers = async <T>(): Promise<T> => {
   const response = await fetch("https://online-shop-api-project.herokuapp.com/users");
-  return response.json();
+  return response.json() as Promise<T>;
 };

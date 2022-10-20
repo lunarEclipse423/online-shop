@@ -34,7 +34,7 @@ const CartPage = () => {
             <CartItem
               id={item.id}
               cartImage={item.cartImage}
-              name={item.name}
+              title={item.title}
               price={item.price}
               quantity={item.quantity}
               totalPrice={item.totalPrice}

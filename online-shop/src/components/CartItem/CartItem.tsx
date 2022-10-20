@@ -41,11 +41,11 @@ const CartItem = ({ ...product }: CartType) => {
       <div className="cart-item-product">
         <img
           src={`${imgBaseUrl}${product.cartImage}`}
-          alt={product.name}
+          alt={product.title}
           className="cart-item__image"
         />
         <div className="cart-item__product-info">
-          <span className="cart-item__title">{product.name}®</span>
+          <span className="cart-item__title">{product.title}®</span>
           <span className="cart-item__product-number">P/N: {product.id}</span>
           <Button classes="remove_button" onClick={removeProductFromCart}>
             Remove

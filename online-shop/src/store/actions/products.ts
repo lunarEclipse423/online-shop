@@ -1,6 +1,6 @@
 import { ProductsActionTypes, ProductType } from "../../types/products";
 
-export const fetchProducts = (fetchedProducts: any[]) => {
+export const fetchProducts = (fetchedProducts: ProductType[]) => {
   return {
     type: ProductsActionTypes.FETCH_PRODUCTS,
     products: fetchedProducts,
