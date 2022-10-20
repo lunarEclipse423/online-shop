@@ -45,6 +45,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li
+            data-testid="button-sign-in"
             onClick={() => dispatch(activateModal())}
             className={
               isLogged === "user" || isLogged === "admin"

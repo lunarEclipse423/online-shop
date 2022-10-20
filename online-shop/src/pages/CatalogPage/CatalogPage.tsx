@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import CatalogItem from "../../components/CatalogItem/CatalogItem";
 import { getAllProducts } from "../../api/ShopService";
 import { firstEntry } from "../../store/actions/entry";
 import { fetchProducts } from "../../store/actions/products";
 import { useTypedSelector } from "../../hooks/storeHooks";
+import CatalogItem from "../../components/CatalogItem/CatalogItem";
 import "./CatalogPage.scss";
 
 const CatalogPage = () => {

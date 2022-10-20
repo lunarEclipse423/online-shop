@@ -8,7 +8,7 @@ const CatalogItem = ({ ...product }) => {
   const imgBaseUrl =
     "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
   return (
-    <div
+    <div data-testid="catalog-item-elem"
       className="catalog-item"
       onClick={() => navigate(`/catalog/${product.id}`, { state: { product } })}
     >

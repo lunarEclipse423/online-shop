@@ -28,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build-ts": "tsc",
+    "test-jest": "jest",
     "test": "react-scripts test",
+    "test:coverage": "npm test -- --env=jsdom --coverage",
     "eject": "react-scripts eject",
     "style": "sass --watch src/sass/style.scss src/sass/style.css"
   },

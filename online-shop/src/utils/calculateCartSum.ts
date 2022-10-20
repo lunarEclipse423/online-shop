@@ -1,4 +1,6 @@
-export const calculateCartSum = (cart: any[]): number => {
+import { CartType } from "../types/cart";
+
+export const calculateCartSum = (cart: CartType[]): number => {
   return cart.reduce((prev, curr) => {
     const precision = 100000000;
     const cartSumCalculated =

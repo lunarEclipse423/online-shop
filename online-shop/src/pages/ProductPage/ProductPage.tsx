@@ -23,9 +23,7 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const isLogged = useTypedSelector((state) => state.isLogged);
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
-  const productItem = useTypedSelector((state) =>
-    state.manageProducts.products.find((el) => el.id === location.state.product.id)
-  );
+  const productItem = location.state.product;
   const [productQuantity, setProductQuantity] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
   const [newProductInfo, setNewProductInfo] = useState(productItem);

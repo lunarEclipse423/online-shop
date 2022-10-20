@@ -104,7 +104,7 @@ const Login = () => {
           errorMessage={errors.username}
         />
         <Input
-          classes="login__input"
+          classes="password__input"
           name="password"
           type="password"
           placeholder="Password"

@@ -22,5 +22,5 @@ export interface CartAction {
 }
 
 export interface CartState {
-  cartItems: any[];
+  cartItems: CartType[];
 }

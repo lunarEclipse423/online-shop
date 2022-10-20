@@ -10,7 +10,7 @@ const Modal = ({ children }: Props) => {
   const isModal = useTypedSelector((state) => state.isModal);
 
   return (
-    <div className={isModal ? "modal active" : "modal"}>
+    <div data-testid="modal-elem" className={isModal ? "modal active" : "modal"}>
       <div className="modal__content">{children}</div>
     </div>
   );

@@ -33,7 +33,7 @@ const CartItem = ({ ...product }: CartType) => {
 
   const removeProductFromCart = (event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault();
-    dispatch(removeProduct(cartItems.find((el) => el.id === product.id)));
+    dispatch(removeProduct(cartItems.find((el) => el.id === product.id)!));
   };
 
   return (
