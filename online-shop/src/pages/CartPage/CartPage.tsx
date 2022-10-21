@@ -10,7 +10,7 @@ import "./CartPage.scss";
 const CartPage = () => {
   const dispatch = useDispatch();
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
-  const [totalPrice, setTotalPrice] = useState(calculateCartSum(cartItems));
+  const [totalPrice, setTotalPrice] = useState<number>(calculateCartSum(cartItems));
 
   useMemo(() => setTotalPrice(calculateCartSum(cartItems)), [cartItems]);
 

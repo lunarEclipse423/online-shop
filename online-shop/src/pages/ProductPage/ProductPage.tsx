@@ -7,6 +7,7 @@ import { validateProductInfo } from "../../utils/validateProductInfo";
 import { calculateTotal } from "../../utils/calculateTotal";
 import { useTypedSelector } from "../../hooks/storeHooks";
 import { ErrorsProductType } from "../../types/products";
+import { ProductType } from "../../types/products";
 import Input from "../../components/UI/input/Input";
 import Textarea from "../../components/UI/textarea/Textarea";
 import Button from "../../components/UI/button/Button";
@@ -26,13 +27,14 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const isLogged = useTypedSelector((state) => state.isLogged);
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
-  const [productItem, setProductItem] = useState(location.state.product);
-  const [productQuantity, setProductQuantity] = useState(1);
-  const [isEditing, setIsEditing] = useState(false);
-  const [newProductInfo, setNewProductInfo] = useState(productItem);
+  const [productItem, setProductItem] = useState<ProductType>(location.state.product);
+  const [productQuantity, setProductQuantity] = useState<number>(1);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [newProductInfo, setNewProductInfo] = useState<ProductType>(productItem);
   const [errors, setErrors] = useState<ErrorsProductType>(initialErrorsValue);
 
   const decrement = (): void => {
+    console.log(location.state.product);
     setProductQuantity(productQuantity === 1 ? productQuantity : productQuantity - 1);
   };
 
@@ -67,8 +69,12 @@ const ProductPage = () => {
     } else {
       dispatch(
         addProduct({
-          ...productItem,
+          id: productItem.id,
+          title: productItem.title,
+          price: productItem.price,
+          cartImage: productItem.cartImage,
           quantity: finalProductQuantity,
+          quantityInStock: productItem.quantity,
           totalPrice: totalPriceCalculated,
         })
       );

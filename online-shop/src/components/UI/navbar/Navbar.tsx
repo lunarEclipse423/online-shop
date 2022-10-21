@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { activateModal } from "../../../store/actions/modal";
@@ -13,7 +12,6 @@ const Navbar = () => {
   const cartItemsCount = useTypedSelector(
     (state) => state.manageCartItems.cartItems.length
   );
-
   return (
     <div className="navbar">
       <div className="navbar-wrapper">
@@ -56,7 +54,7 @@ const Navbar = () => {
             <span className="icon_login"></span>
           </li>
           <li
-          data-testid="button-logout"
+            data-testid="button-logout"
             onClick={() => {
               dispatch(logout());
               navigate("/about");

@@ -1,4 +1,3 @@
-import React from "react";
 import { useTypedSelector } from "../../../hooks/storeHooks";
 import "./Modal.scss";
 
@@ -8,7 +7,6 @@ type Props = {
 
 const Modal = ({ children }: Props) => {
   const isModal = useTypedSelector((state) => state.isModal);
-
   return (
     <div data-testid="modal-elem" className={isModal ? "modal active" : "modal"}>
       <div className="modal__content">{children}</div>

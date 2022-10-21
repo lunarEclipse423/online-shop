@@ -9,11 +9,13 @@ import "./CartItem.scss";
 const CartItem = ({ ...product }: CartType) => {
   const dispatch = useDispatch();
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
-  const [currProductQuantity, setCurrProductQuantity] = useState(product.quantity);
+  const [currProductQuantity, setCurrProductQuantity] = useState<number>(
+    product.quantity
+  );
   const imgBaseUrl =
     "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
 
-  const decrement = () => {
+  const decrement = (): void => {
     if (currProductQuantity === 1) {
       return;
     }
@@ -22,7 +24,7 @@ const CartItem = ({ ...product }: CartType) => {
     dispatch(changeProductQuantity(product, newProductQuantity));
   };
 
-  const increment = () => {
+  const increment = (): void => {
     if (currProductQuantity === product.quantityInStock) {
       return;
     }

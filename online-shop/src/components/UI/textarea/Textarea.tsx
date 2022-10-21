@@ -7,7 +7,7 @@ type TextareaPropsType = {
   placeholder: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  errorMessage: string | undefined;
+  errorMessage?: string;
 };
 
 const Textarea = (props: TextareaPropsType) => {

@@ -1,14 +1,14 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ProductType } from "../../types/products";
 import "./CatalogItem.scss";
 
-// add type for product (catalog item type or smth)
-const CatalogItem = ({ ...product }) => {
+const CatalogItem = ({ ...product }: ProductType) => {
   const navigate = useNavigate();
   const imgBaseUrl =
     "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
   return (
-    <div data-testid="catalog-item-elem"
+    <div
+      data-testid="catalog-item-elem"
       className="catalog-item"
       onClick={() => navigate(`/catalog/${product.id}`, { state: { product } })}
     >

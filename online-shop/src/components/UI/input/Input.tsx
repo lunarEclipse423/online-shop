@@ -10,7 +10,7 @@ type InputPropsType = {
   onChange:
     | ((event: React.FormEvent<HTMLInputElement>) => void)
     | ((event: React.ChangeEvent<HTMLInputElement>) => void);
-  errorMessage: string | undefined;
+  errorMessage?: string;
 };
 
 const Input = (props: InputPropsType) => {
