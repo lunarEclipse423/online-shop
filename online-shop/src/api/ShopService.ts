@@ -1,3 +1,6 @@
+export const baseImageUrl =
+  "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
+
 export const getAllProducts = async () => {
   try {
     const response = await fetch(

@@ -2,9 +2,9 @@ import { getAllProducts, getAllUsers, getProductById } from "./ShopService";
 import { UserType } from "../types/user";
 
 describe("Test API functions", () => {
-  // test.only("my only true test", () => {
-  //   expect(1 + 1).toEqual(2);
-  // });
+  test.only("my only true test", () => {
+    expect(1 + 1).toEqual(2);
+  });
 
   test("Get response for products", async () => {
     const products = await getAllProducts();

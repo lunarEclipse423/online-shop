@@ -8,14 +8,13 @@ import { calculateTotal } from "../../utils/calculateTotal";
 import { useTypedSelector } from "../../hooks/storeHooks";
 import { ErrorsProductType } from "../../types/products";
 import { ProductType } from "../../types/products";
+import { baseImageUrl } from "../../api/ShopService";
 import Input from "../../components/UI/input/Input";
 import Textarea from "../../components/UI/textarea/Textarea";
 import Button from "../../components/UI/button/Button";
 import "./ProductPage.scss";
 
 const ProductPage = () => {
-  const imgBaseUrl =
-    "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
   const initialErrorsValue: ErrorsProductType = {
     title: "",
     description: "",
@@ -112,7 +111,7 @@ const ProductPage = () => {
           width="505"
           height="757"
           className="image_candle"
-          src={`${imgBaseUrl}${productItem.largeImage}`}
+          src={`${baseImageUrl}${productItem.largeImage}`}
           alt="candle"
         />
         <span className="candleaf-info">

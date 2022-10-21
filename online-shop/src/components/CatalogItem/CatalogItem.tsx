@@ -1,11 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { ProductType } from "../../types/products";
+import { baseImageUrl } from "../../api/ShopService";
 import "./CatalogItem.scss";
 
 const CatalogItem = ({ ...product }: ProductType) => {
   const navigate = useNavigate();
-  const imgBaseUrl =
-    "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
   return (
     <div
       data-testid="catalog-item-elem"
@@ -16,7 +15,7 @@ const CatalogItem = ({ ...product }: ProductType) => {
         <img
           width="300"
           height="450"
-          src={`${imgBaseUrl}${product.image}`}
+          src={`${baseImageUrl}${product.image}`}
           alt="catalog item"
         />
       </div>

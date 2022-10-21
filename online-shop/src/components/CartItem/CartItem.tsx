@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeProduct, changeProductQuantity } from "../../store/actions/cart";
 import { useTypedSelector } from "../../hooks/storeHooks";
 import { CartType } from "../../types/cart";
+import { baseImageUrl } from "../../api/ShopService";
 import Button from "../UI/button/Button";
 import "./CartItem.scss";
 
@@ -12,8 +13,6 @@ const CartItem = ({ ...product }: CartType) => {
   const [currProductQuantity, setCurrProductQuantity] = useState<number>(
     product.quantity
   );
-  const imgBaseUrl =
-    "https://raw.githubusercontent.com/lunarEclipse423/online-shop-api/main/img/";
 
   const decrement = (): void => {
     if (currProductQuantity === 1) {
@@ -42,7 +41,7 @@ const CartItem = ({ ...product }: CartType) => {
     <div className="cart-item">
       <div className="cart-item-product">
         <img
-          src={`${imgBaseUrl}${product.cartImage}`}
+          src={`${baseImageUrl}${product.cartImage}`}
           alt={product.title}
           className="cart-item__image"
         />
