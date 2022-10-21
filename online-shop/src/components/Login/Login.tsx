@@ -35,7 +35,7 @@ const Login = () => {
         return;
       }
     }
-    authorization(formValues, loggedInRole).then((res: [LoginType, string]) => {
+    authorization(formValues).then((res: [LoginType, string]) => {
       currentErrors = res[0];
       loggedInRole = res[1];
       for (let key in currentErrors) {
