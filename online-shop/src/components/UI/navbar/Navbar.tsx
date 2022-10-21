@@ -56,6 +56,7 @@ const Navbar = () => {
             <span className="icon_login"></span>
           </li>
           <li
+          data-testid="button-logout"
             onClick={() => {
               dispatch(logout());
               navigate("/about");

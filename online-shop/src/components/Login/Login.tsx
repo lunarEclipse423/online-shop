@@ -11,23 +11,23 @@ import Input from "../UI/input/Input";
 import "./Login.scss";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const startValues = {
     username: "",
     password: "",
   };
-  const [formValues, setFormValues] = useState(startValues);
-  const [errors, setErrors] = useState<LoginType>(startValues);
   let loggedInRole = "";
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [formValues, setFormValues] = useState<LoginType>(startValues);
+  const [errors, setErrors] = useState<LoginType>(startValues);
 
   const inputHandler = (event: React.FormEvent<HTMLInputElement>): void => {
     const { name, value } = event.currentTarget;
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const validate = (values: LoginType) => {
-    const errors: LoginType = startValues;
+  const validate = (values: LoginType): LoginType => {
+    const errors: LoginType = Object.assign({}, startValues);
     for (let key in values) {
       if (!values[key]) {
         errors[key] = "Field is empty. Please, fill in";
@@ -39,9 +39,9 @@ const Login = () => {
   const auth = async (values: LoginType): Promise<LoginType> => {
     return new Promise((resolve) =>
       setTimeout(async () => {
-        const errors: LoginType = startValues;
+        const errors: LoginType = Object.assign({}, startValues);
         const users = await getAllUsers<UserType[]>();
-        users.forEach((user: UserType) => {
+        users!.forEach((user: UserType) => {
           if (values.username === user.username && values.password === user.password) {
             loggedInRole = user.role;
           }

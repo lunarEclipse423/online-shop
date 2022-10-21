@@ -196,13 +196,17 @@ const ProductPage = () => {
               <div className="quantity-border">
                 <form className="quantity-form">
                   <input
+                    data-testid="button-minus"
                     type="button"
                     value="-"
                     className="quantity-form__minus"
                     onClick={decrement}
                   />
-                  <span className="quantity-form__number">{productQuantity}</span>
+                  <span data-testid="quantity" className="quantity-form__number">
+                    {productQuantity}
+                  </span>
                   <input
+                    data-testid="button-plus"
                     type="button"
                     value="+"
                     className="quantity-form__plus"

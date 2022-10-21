@@ -11,6 +11,11 @@ if (!rootElement) {
 }
 const root = ReactDOM.createRoot(rootElement);
 
+store.subscribe(() => {
+  console.log("state updated");
+  console.log(store.getState());
+});
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
