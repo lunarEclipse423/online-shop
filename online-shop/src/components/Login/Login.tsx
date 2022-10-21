@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser, loginAdmin } from "../../store/actions/login";
 import { deactivateModal } from "../../store/actions/modal";
-import { getAllUsers } from "../../api/ShopService";
-import { UserType } from "../../types/user";
 import { LoginType } from "../../types/login";
+import { validateLoginInput } from "../../utils/validateLoginInput";
+import { authorization } from "../../utils/authorization";
 import Button from "../UI/button/Button";
 import Input from "../UI/input/Input";
 import "./Login.scss";
@@ -26,45 +26,18 @@ const Login = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const validate = (values: LoginType): LoginType => {
-    const errors: LoginType = Object.assign({}, startValues);
-    for (let key in values) {
-      if (!values[key]) {
-        errors[key] = "Field is empty. Please, fill in";
-      }
-    }
-    return errors;
-  };
-
-  const auth = async (values: LoginType): Promise<LoginType> => {
-    return new Promise((resolve) =>
-      setTimeout(async () => {
-        const errors: LoginType = Object.assign({}, startValues);
-        const users = await getAllUsers<UserType[]>();
-        users!.forEach((user: UserType) => {
-          if (values.username === user.username && values.password === user.password) {
-            loggedInRole = user.role;
-          }
-        });
-        if (!loggedInRole) {
-          errors["password"] = "This user doesnt exist";
-        }
-        resolve(errors);
-      }, 1000)
-    );
-  };
-
   const login = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    let currentErrors = validate(formValues);
+    let currentErrors = validateLoginInput(formValues);
     for (let key in currentErrors) {
       if (currentErrors[key] !== "") {
         setErrors(currentErrors);
         return;
       }
     }
-    auth(formValues).then((res: LoginType) => {
-      currentErrors = res;
+    authorization(formValues, loggedInRole).then((res: [LoginType, string]) => {
+      currentErrors = res[0];
+      loggedInRole = res[1];
       for (let key in currentErrors) {
         if (currentErrors[key] !== "") {
           setErrors(currentErrors);
