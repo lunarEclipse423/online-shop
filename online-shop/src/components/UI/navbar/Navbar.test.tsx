@@ -6,8 +6,9 @@ import { loginUser } from "../../../store/actions/login";
 import Navbar from "./Navbar";
 import store from "../../../store";
 
-describe("Test Navbar component", () => {
-  test("Logout works properly", () => {
+describe("Navbar", () => {
+  test("Should logout", () => {
+    // given
     store.dispatch(loginUser());
     render(
       <Provider store={store}>
@@ -18,7 +19,11 @@ describe("Test Navbar component", () => {
     );
     const buttonLogout = screen.getByTestId("button-logout");
     expect(buttonLogout).not.toHaveClass("tools__item hidden");
+
+    // when
     fireEvent.click(buttonLogout);
+
+    // then
     expect(buttonLogout).toHaveClass("tools__item hidden");
   });
 });

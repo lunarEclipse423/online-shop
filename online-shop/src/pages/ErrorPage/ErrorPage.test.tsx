@@ -3,8 +3,9 @@ import "@testing-library/jest-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 
-describe("Test Catalog Page component", () => {
-  test("Renders catalog page", () => {
+describe("Catalog page", () => {
+  test("Should render catalog page", () => {
+    // given 
     render(
       <Router>
         <ErrorPage />
@@ -13,12 +14,11 @@ describe("Test Catalog Page component", () => {
 
     const titleText = screen.getByText(/Whoops!/i);
     const errorText = screen.getByText(/We can't seem the page you are looking for/i);
-
     const returnButton = screen.getByRole("button", { name: /Return Home/i });
 
+    // then
     expect(titleText).toBeInTheDocument();
     expect(errorText).toBeInTheDocument();
     expect(returnButton).toBeInTheDocument();
-    // screen.debug();
   });
 });

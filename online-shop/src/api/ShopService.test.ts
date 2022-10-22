@@ -2,22 +2,22 @@ import { getAllProducts, getAllUsers, getProductById } from "./ShopService";
 import { UserType } from "../types/user";
 import { ProductType } from "../types/products";
 
-describe("Test API functions", () => {
+describe("API functions", () => {
   test.only("my only true test", () => {
     expect(1 + 1).toEqual(2);
   });
 
-  test("Get response for products", async () => {
+  test("Should get response for products", async () => {
     const products = await getAllProducts<ProductType[]>();
     expect(products!.length).toBe(9);
   });
 
-  test("Get response for users", async () => {
+  test("Should get response for users", async () => {
     const users = await getAllUsers<UserType[]>();
     expect(users!.length).toBe(2);
   });
 
-  test("Get response for specific product", async () => {
+  test("Should get response for specific product", async () => {
     const testProduct = {
       id: 987278001,
       image: "item_1.jpg",

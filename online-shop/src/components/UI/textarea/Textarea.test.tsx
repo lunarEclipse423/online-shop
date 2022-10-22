@@ -2,8 +2,9 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Textarea from "./Textarea";
 
-describe("Test Textarea component", () => {
+describe("Textarea", () => {
   test("Should render textarea", () => {
+    // given
     const testTextareaProps = {
       classes: "textarea",
       name: "description",
@@ -16,6 +17,8 @@ describe("Test Textarea component", () => {
     };
     render(<Textarea {...testTextareaProps} />);
     const textarea = screen.getByPlaceholderText("Type your description");
+
+    // then
     expect(textarea).toBeInTheDocument();
   });
 });

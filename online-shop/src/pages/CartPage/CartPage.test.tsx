@@ -5,8 +5,9 @@ import { Provider } from "react-redux";
 import CartPage from "./CartPage";
 import store from "../../store";
 
-describe("Test Cart Page component", () => {
-  test("Renders cart page", () => {
+describe("Cart page", () => {
+  test("Should render cart page", () => {
+    // given
     render(
       <Provider store={store}>
         <Router>
@@ -14,14 +15,13 @@ describe("Test Cart Page component", () => {
         </Router>
       </Provider>
     );
-    
+
     const titleText = screen.getByText(/Your cart items/i);
     const productSubtitle = screen.getByText(/Product/i);
     const priceSubtitle = screen.getByText(/Price/i);
     const quantitySubtitle = screen.getByText(/Quantity/i);
     const totalSubtitle = screen.getByText(/^Total$/i);
     const subtotalSubtitle = screen.getByText(/^Sub-total$/i);
-
     const buttonClear = screen.getByRole("button", {
       name: /Clear cart/i,
     });
@@ -29,15 +29,14 @@ describe("Test Cart Page component", () => {
       name: /Checkout/i,
     });
 
+    // then
     expect(titleText).toBeInTheDocument();
     expect(productSubtitle).toBeInTheDocument();
     expect(priceSubtitle).toBeInTheDocument();
     expect(quantitySubtitle).toBeInTheDocument();
     expect(totalSubtitle).toBeInTheDocument();
     expect(subtotalSubtitle).toBeInTheDocument();
-
     expect(buttonClear).toBeInTheDocument();
     expect(buttonCheckout).toBeInTheDocument();
-    // screen.debug();
   });
 });

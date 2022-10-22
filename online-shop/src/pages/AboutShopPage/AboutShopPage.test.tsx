@@ -3,8 +3,9 @@ import "@testing-library/jest-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import AboutShopPage from "./AboutShopPage";
 
-describe("Test About Shop Page component", () => {
-  test("Renders about shop page", () => {
+describe("About Shop page", () => {
+  test("Should render about shop page", () => {
+    // given
     render(
       <Router>
         <AboutShopPage />
@@ -12,8 +13,9 @@ describe("Test About Shop Page component", () => {
     );
     const titleText = screen.getByText(/The nature candle/i);
     const button = screen.getByRole("button");
+
+    // then
     expect(titleText).toBeInTheDocument();
     expect(button).toBeInTheDocument();
-    // screen.debug();
   });
 });

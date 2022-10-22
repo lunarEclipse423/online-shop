@@ -4,8 +4,9 @@ import { Provider } from "react-redux";
 import App from "./App";
 import store from "./store";
 
-describe("Test App component", () => {
-  test("Renders app component", () => {
+describe("App", () => {
+  test("Should render app component", () => {
+    // given
     render(
       <Provider store={store}>
         <App />
@@ -16,9 +17,9 @@ describe("Test App component", () => {
     const aboutText = screen.getByText(/About/i);
     const discoverText = screen.getByText(/Discover/i);
 
+    // then
     expect(navbarLogoText).toBeInTheDocument();
     expect(aboutText).toBeInTheDocument();
     expect(discoverText).toBeInTheDocument();
-    // screen.debug();
   });
 });

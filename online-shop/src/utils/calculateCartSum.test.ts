@@ -1,7 +1,8 @@
 import { calculateCartSum } from "./calculateCartSum";
 
-describe("Value validation", () => {
-  test("Simple cart sum", () => {
+describe("Calculate cart sum function", () => {
+  test("Should calculate cart sum (integer values)", () => {
+    // given
     const cart = [
       {
         id: 1,
@@ -31,12 +32,17 @@ describe("Value validation", () => {
         quantityInStock: 10,
       },
     ];
+
+    // then
     expect(calculateCartSum(cart)).toEqual(52);
   });
-  test("Empty cart", () => {
+
+  test("Should calculate sum of empty cart", () => {
     expect(calculateCartSum([])).toEqual(0);
   });
-  test("Non-integer cart sum with rounding (5 times 3.99)", () => {
+
+  test("Should calculate cart sum (non-integer values)", () => {
+    // given
     const cart = [
       {
         id: 1,
@@ -57,6 +63,8 @@ describe("Value validation", () => {
         quantityInStock: 10,
       },
     ];
+
+    // then
     expect(calculateCartSum(cart)).toEqual(21.95);
   });
 });

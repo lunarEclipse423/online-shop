@@ -6,8 +6,8 @@ import { loginAdmin, loginUser } from "../../store/actions/login";
 import ProductPage from "./ProductPage";
 import store from "../../store";
 
-describe("Test Product Page component", () => {
-  const setup = (testQuantity: number) => {
+describe("Product page", () => {
+  const renderProductPage = (testQuantity: number) => {
     const testProduct = {
       id: 987278001,
       image: "item_1.jpg",
@@ -35,63 +35,85 @@ describe("Test Product Page component", () => {
     );
   };
 
-  test("Renders specific product page", () => {
-    setup(10);
+  test("Should render specific product page", () => {
+    // given
+    renderProductPage(10);
     const allProductsText = screen.getByText(
       /All hand-made with natural soy wax, Candleaf is made for your pleasure moments./i
     );
     const shippingText = screen.getByText(/🚚 FREE SHIPPING/i);
     const toBuyText = screen.getByText(/Sign in to buy/i);
 
+    // then
     expect(allProductsText).toBeInTheDocument();
     expect(shippingText).toBeInTheDocument();
     expect(toBuyText).toBeInTheDocument();
   });
 
-  describe("Test quantity changes by click", () => {
+  describe("Should change quantity on click", () => {
     test("Decrement", () => {
-      setup(10);
+      // given
+      renderProductPage(10);
       const quantity = screen.getByTestId("quantity");
       const buttonMinus = screen.getByTestId("button-minus");
       const buttonPlus = screen.getByTestId("button-plus");
       fireEvent.click(buttonPlus);
       expect(quantity.textContent).toEqual("2");
+
+      // when
       fireEvent.click(buttonMinus);
+
+      // then
       expect(quantity.textContent).toEqual("1");
     });
 
-    test("Decrement if current quantity equals to 1", () => {
-      setup(10);
+    test("Dont decrement if current quantity equals to 1", () => {
+      // given
+      renderProductPage(10);
       const quantity = screen.getByTestId("quantity");
       const buttonMinus = screen.getByTestId("button-minus");
       expect(quantity.textContent).toEqual("1");
+
+      // when
       fireEvent.click(buttonMinus);
+
+      // then
       expect(quantity.textContent).toEqual("1");
     });
 
     test("Increment", () => {
-      setup(10);
+      // given
+      renderProductPage(10);
       const quantity = screen.getByTestId("quantity");
       const buttonPlus = screen.getByTestId("button-plus");
       expect(quantity.textContent).toEqual("1");
+
+      // when
       fireEvent.click(buttonPlus);
+
+      // then
       expect(quantity.textContent).toEqual("2");
     });
 
-    test("Increment if current quantity equals to available in stock", () => {
-      setup(2);
+    test("Dont increment if current quantity equals to available in stock", () => {
+      // given
+      renderProductPage(2);
       const quantity = screen.getByTestId("quantity");
       const buttonPlus = screen.getByTestId("button-plus");
       expect(quantity.textContent).toEqual("1");
       fireEvent.click(buttonPlus);
       expect(quantity.textContent).toEqual("2");
+
+      // when
       fireEvent.click(buttonPlus);
+
+      // then
       expect(quantity.textContent).toEqual("2");
     });
   });
 
-  describe("Test user rights", () => {
-    const userSetup = (testQuantity: number) => {
+  describe("User rights", () => {
+    const renderUserProductPage = (testQuantity: number) => {
       const testProduct = {
         id: 987278001,
         image: "item_1.jpg",
@@ -120,37 +142,51 @@ describe("Test Product Page component", () => {
       );
     };
 
-    test("Add 2 pieces of item to cart", () => {
-      userSetup(10);
+    test("Should add 2 pieces of item to cart", () => {
+      // given
+      renderUserProductPage(10);
       const quantity = screen.getByTestId("quantity");
       const buttonPlus = screen.getByTestId("button-plus");
       const buttonAddToCart = screen.getByRole("button", { name: /Add to cart/i });
       fireEvent.click(buttonPlus);
       expect(quantity.textContent).toEqual("2");
+
+      // when
       fireEvent.click(buttonAddToCart);
+
+      // then
       expect(quantity.textContent).toEqual("1");
     });
 
-    test("Add one specific item to cart twice", () => {
-      userSetup(10);
+    test("Should add one specific item to cart twice", () => {
+      // given
+      renderUserProductPage(10);
       const quantity = screen.getByTestId("quantity");
       const buttonPlus = screen.getByTestId("button-plus");
       const buttonAddToCart = screen.getByRole("button", { name: /Add to cart/i });
+
+      // when
       fireEvent.click(buttonPlus);
       expect(quantity.textContent).toEqual("2");
       fireEvent.click(buttonAddToCart);
+
+      // then
       expect(quantity.textContent).toEqual("1");
+
+      // when
       fireEvent.click(buttonPlus);
       fireEvent.click(buttonPlus);
       fireEvent.click(buttonPlus);
       expect(quantity.textContent).toEqual("4");
       fireEvent.click(buttonAddToCart);
+
+      // then
       expect(quantity.textContent).toEqual("1");
     });
   });
 
-  describe("Test admin rights", () => {
-    const adminSetup = (testQuantity: number) => {
+  describe("Admin rights", () => {
+    const renderAdminProductPage = (testQuantity: number) => {
       const testProduct = {
         id: 987278001,
         image: "item_1.jpg",
@@ -179,20 +215,26 @@ describe("Test Product Page component", () => {
       );
     };
 
-    test("Input handler handles admin typing", async () => {
-      adminSetup(10);
+    test("Should handle admin typing", async () => {
+      // given
+      renderAdminProductPage(10);
       const editButton = screen.getByRole("button", { name: /Edit/i });
+
+      // when
       fireEvent.click(editButton);
       await screen.findByRole("button", { name: /Cancel/i });
       const titleInput: HTMLInputElement = screen.getByPlaceholderText(
         "Enter new product name..."
       );
       fireEvent.change(titleInput, { target: { value: "Lamp" } });
+
+      // then
       expect(titleInput.value).toBe("Lamp");
     });
 
-    test("Cancel changes", async () => {
-      adminSetup(10);
+    test("Should cancel changes by click", async () => {
+      // given
+      renderAdminProductPage(10);
       expect(screen.getByText(/Large cork-lid scented candle/i)).toBeInTheDocument();
       expect(
         screen.getByText(
@@ -206,12 +248,14 @@ describe("Test Product Page component", () => {
         )
       ).toBeInTheDocument();
 
+      // when
       const editButton = screen.getByRole("button", { name: /Edit/i });
       fireEvent.click(editButton);
       const cancelButton = await screen.findByRole("button", { name: /Cancel/i });
       fireEvent.click(cancelButton);
       await screen.findByRole("button", { name: /Edit/i });
 
+      // then
       expect(screen.getByText(/Large cork-lid scented candle/i)).toBeInTheDocument();
       expect(
         screen.getByText(
@@ -226,8 +270,9 @@ describe("Test Product Page component", () => {
       ).toBeInTheDocument();
     });
 
-    test("Save changes with no error", async () => {
-      adminSetup(10);
+    test("Should save changes with no error", async () => {
+      // given
+      renderAdminProductPage(10);
       const title = screen.getByText(/Large cork-lid scented candle/i);
       expect(title).toBeInTheDocument();
       expect(
@@ -242,6 +287,7 @@ describe("Test Product Page component", () => {
         )
       ).toBeInTheDocument();
 
+      // when
       const editButton = screen.getByRole("button", { name: /Edit/i });
       fireEvent.click(editButton);
       const saveButton = await screen.findByRole("button", { name: /Save/i });
@@ -254,6 +300,7 @@ describe("Test Product Page component", () => {
       fireEvent.click(saveButton);
       await screen.findByRole("button", { name: /Edit/i });
 
+      // then
       expect(title).not.toBeInTheDocument();
       expect(screen.getByText(/Lamp/i)).toBeInTheDocument();
       expect(
@@ -269,9 +316,11 @@ describe("Test Product Page component", () => {
       ).toBeInTheDocument();
     });
 
-    test("Save changes with error", async () => {
-      adminSetup(10);
+    test("Should don't save changes and fail with error", async () => {
+      // given
+      renderAdminProductPage(10);
 
+      // when
       const editButton = screen.getByRole("button", { name: /Edit/i });
       fireEvent.click(editButton);
       const saveButton = await screen.findByRole("button", { name: /Save/i });
@@ -282,6 +331,8 @@ describe("Test Product Page component", () => {
       fireEvent.change(titleInput, { target: { value: "" } });
       expect(titleInput.value).toBe("");
       fireEvent.click(saveButton);
+
+      // then
       await screen.findByText("Field is empty. Please, fill in");
     });
   });

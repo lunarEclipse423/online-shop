@@ -2,28 +2,15 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import { loginUser } from "../../store/actions/login";
 import App from "../../App";
 import Login from "./Login";
 import Modal from "../UI/modal/Modal";
 import store from "../../store";
 
-describe("Test Login component", () => {
-  const setup = () => {
-    render(
-      <Provider store={store}>
-        <Router>
-          <Modal>
-            <Login />
-          </Modal>
-        </Router>
-      </Provider>
-    );
-    // screen.debug();
-  };
-
-  test("Renders login component", () => {
-    setup();
+describe("Login", () => {
+  test("Should render login component", () => {
+    // given
+    renderLogin();
 
     const titleText = screen.getByText(/Sign In/i);
     const usernameInput = screen.getByPlaceholderText("Username");
@@ -35,6 +22,7 @@ describe("Test Login component", () => {
       name: /Login/i,
     });
 
+    // then
     expect(titleText).toBeInTheDocument();
     expect(usernameInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
@@ -42,71 +30,102 @@ describe("Test Login component", () => {
     expect(buttonLogin).toBeInTheDocument();
   });
 
-  describe("Input handler handles user typing", () => {
-    test("Input handler handles username input", () => {
-      setup();
+  describe("Should handle user input", () => {
+    test("Username input", () => {
+      // given
+      renderLogin();
       const usernameInput: HTMLInputElement = screen.getByPlaceholderText("Username");
+
+      // when
       fireEvent.change(usernameInput, { target: { value: "arthur" } });
+
+      // then
       expect(usernameInput.value).toBe("arthur");
     });
 
-    test("Input handler handles password input", () => {
-      setup();
+    test("Password input", () => {
+      // given
+      renderLogin();
       const passwordInput: HTMLInputElement = screen.getByPlaceholderText("Password");
+
+      // when
       fireEvent.change(passwordInput, { target: { value: "1234" } });
+
+      // then
       expect(passwordInput.value).toBe("1234");
     });
   });
 
-  describe("Fails with error on empty fields", () => {
-    test("Error on empty password input", () => {
-      setup();
+  describe("Should fail with error on empty field", () => {
+    test("Empty password input", () => {
+      // given
+      renderLogin();
       const usernameInput: HTMLInputElement = screen.getByPlaceholderText("Username");
       const buttonLogin = screen.getByRole("button", {
         name: /Login/i,
       });
+
+      // when
       fireEvent.change(usernameInput, { target: { value: "arthur" } });
       fireEvent.click(buttonLogin);
       const error = screen.getByText("Field is empty. Please, fill in");
+
+      // then
       expect(error).toBeInTheDocument();
     });
 
-    test("Error on empty username input", () => {
-      setup();
+    test("Empty username input", () => {
+      // given
+      renderLogin();
       const passwordInput: HTMLInputElement = screen.getByPlaceholderText("Password");
       const buttonLogin = screen.getByRole("button", {
         name: /Login/i,
       });
+
+      // when
       fireEvent.change(passwordInput, { target: { value: "1234" } });
       fireEvent.click(buttonLogin);
       const error = screen.getByText("Field is empty. Please, fill in");
+
+      // then
       expect(error).toBeInTheDocument();
     });
 
-    test("Error on empty username and passwords inputs", () => {
-      setup();
+    test("Empty username and password inputs", () => {
+      // given
+      renderLogin();
       const buttonLogin = screen.getByRole("button", {
         name: /Login/i,
       });
+
+      // when
       fireEvent.click(buttonLogin);
       const error = screen.getAllByText("Field is empty. Please, fill in");
+
+      // then
       expect(error.length).toBe(2);
     });
   });
 
-  describe("Cancel button works", () => {
-    test("Cancel button clears inputs", () => {
-      setup();
+  describe("Should close pop-up on cancel button click", () => {
+    test("Should clear inputs on cancel button click", () => {
+      // given
+      renderLogin();
       const usernameInput: HTMLInputElement = screen.getByPlaceholderText("Username");
       const buttonCancel = screen.getByRole("button", {
         name: /Cancel/i,
       });
+
+      // when
       fireEvent.change(usernameInput, { target: { value: "arthur" } });
       fireEvent.click(buttonCancel);
+
+      // then
       expect(usernameInput.value).toBe("");
     });
 
-    test("Cancel button deactivates modal", () => {
+    test("Should deactivate modal on cancel button click", () => {
+      // given
       render(
         <Provider store={store}>
           <App />
@@ -118,8 +137,24 @@ describe("Test Login component", () => {
         name: /Cancel/i,
       });
       expect(screen.getByTestId("modal-elem")).toHaveClass("active");
+
+      // when
       fireEvent.click(buttonCancel);
+
+      // then
       expect(screen.getByTestId("modal-elem")).not.toHaveClass("active");
     });
   });
 });
+
+const renderLogin = () => {
+  render(
+    <Provider store={store}>
+      <Router>
+        <Modal>
+          <Login />
+        </Modal>
+      </Router>
+    </Provider>
+  );
+};
