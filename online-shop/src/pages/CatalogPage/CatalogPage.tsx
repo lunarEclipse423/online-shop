@@ -16,8 +16,8 @@ const CatalogPage = () => {
   useEffect(() => {
     if (entry) {
       firstEntry();
-      getAllProducts().then((data) => {
-        fetchProducts(data);
+      getAllProducts<ProductType[]>().then((data) => {
+        fetchProducts(data!);
         setProducts(productItems);
       });
     } else {

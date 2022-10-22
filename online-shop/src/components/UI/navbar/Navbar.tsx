@@ -11,6 +11,7 @@ const Navbar = () => {
   const cartItemsCount = useTypedSelector(
     (state) => state.manageCartItems.cartItems.length
   );
+
   return (
     <div className="navbar">
       <div className="navbar-wrapper">

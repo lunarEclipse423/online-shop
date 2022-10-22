@@ -1,5 +1,6 @@
 import { getAllProducts, getAllUsers, getProductById } from "./ShopService";
 import { UserType } from "../types/user";
+import { ProductType } from "../types/products";
 
 describe("Test API functions", () => {
   test.only("my only true test", () => {
@@ -7,7 +8,7 @@ describe("Test API functions", () => {
   });
 
   test("Get response for products", async () => {
-    const products = await getAllProducts();
+    const products = await getAllProducts<ProductType[]>();
     expect(products!.length).toBe(9);
   });
 

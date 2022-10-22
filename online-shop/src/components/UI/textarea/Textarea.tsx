@@ -2,11 +2,11 @@ import React from "react";
 import "./Textarea.scss";
 
 type TextareaPropsType = {
-  classes?: string;
   name: string;
   placeholder: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  classes?: string;
   errorMessage?: string;
 };
 

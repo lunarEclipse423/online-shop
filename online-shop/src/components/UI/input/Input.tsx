@@ -2,7 +2,6 @@ import React from "react";
 import "./Input.scss";
 
 type InputPropsType = {
-  classes?: string;
   type: string;
   placeholder: string;
   name: string;
@@ -10,6 +9,7 @@ type InputPropsType = {
   onChange:
     | ((event: React.FormEvent<HTMLInputElement>) => void)
     | ((event: React.ChangeEvent<HTMLInputElement>) => void);
+  classes?: string;
   errorMessage?: string;
 };
 
