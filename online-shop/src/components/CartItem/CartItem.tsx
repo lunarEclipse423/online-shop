@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { removeProduct, changeProductQuantity } from "../../store/actions/cart";
-import { useTypedSelector } from "../../hooks/storeHooks";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useCartActions } from "../../hooks/useActions";
 import { CartType } from "../../types/cart";
 import { baseImageUrl } from "../../api/ShopService";
 import Button from "../UI/button/Button";
 import "./CartItem.scss";
 
 const CartItem = ({ ...product }: CartType) => {
-  const dispatch = useDispatch();
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
+  const { changeProductQuantity, removeProduct } = useCartActions();
   const [currProductQuantity, setCurrProductQuantity] = useState<number>(
     product.quantity
   );
@@ -20,7 +19,7 @@ const CartItem = ({ ...product }: CartType) => {
     }
     const newProductQuantity = currProductQuantity - 1;
     setCurrProductQuantity(newProductQuantity);
-    dispatch(changeProductQuantity(product, newProductQuantity));
+    changeProductQuantity(product, newProductQuantity);
   };
 
   const increment = (): void => {
@@ -29,12 +28,12 @@ const CartItem = ({ ...product }: CartType) => {
     }
     const newProductQuantity = currProductQuantity + 1;
     setCurrProductQuantity(newProductQuantity);
-    dispatch(changeProductQuantity(product, newProductQuantity));
+    changeProductQuantity(product, newProductQuantity);
   };
 
   const removeProductFromCart = (event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault();
-    dispatch(removeProduct(cartItems.find((el) => el.id === product.id)!));
+    removeProduct(cartItems.find((el) => el.id === product.id)!);
   };
 
   return (

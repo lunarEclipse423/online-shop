@@ -1,4 +1,4 @@
-import { useTypedSelector } from "../../../hooks/storeHooks";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import "./Modal.scss";
 
 type Props = {

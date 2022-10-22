@@ -1,13 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { activateModal } from "../../../store/actions/modal";
-import { logout } from "../../../store/actions/login";
-import { useTypedSelector } from "../../../hooks/storeHooks";
+import { useLoginActions, useModalActions } from "../../../hooks/useActions";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import "./Navbar.scss";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { activateModal } = useModalActions();
+  const { logout } = useLoginActions();
   const isLogged = useTypedSelector((state) => state.isLogged);
   const cartItemsCount = useTypedSelector(
     (state) => state.manageCartItems.cartItems.length
@@ -44,7 +43,7 @@ const Navbar = () => {
           </li>
           <li
             data-testid="button-sign-in"
-            onClick={() => dispatch(activateModal())}
+            onClick={() => activateModal()}
             className={
               isLogged === "user" || isLogged === "admin"
                 ? "tools__item hidden"
@@ -56,7 +55,7 @@ const Navbar = () => {
           <li
             data-testid="button-logout"
             onClick={() => {
-              dispatch(logout());
+              logout();
               navigate("/about");
             }}
             className={

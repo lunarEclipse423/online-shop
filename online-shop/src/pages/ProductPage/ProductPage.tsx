@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addProduct, changeProductQuantity } from "../../store/actions/cart";
-import { editProduct } from "../../store/actions/products";
+import { useCartActions, useProductsActions } from "../../hooks/useActions";
 import { validateProductInfo } from "../../utils/validateProductInfo";
 import { calculateTotal } from "../../utils/calculateTotal";
-import { useTypedSelector } from "../../hooks/storeHooks";
-import { ErrorsProductType } from "../../types/products";
-import { ProductType } from "../../types/products";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { ProductType, ErrorsProductType } from "../../types/products";
 import { baseImageUrl } from "../../api/ShopService";
 import Input from "../../components/UI/input/Input";
 import Textarea from "../../components/UI/textarea/Textarea";
@@ -23,7 +20,8 @@ const ProductPage = () => {
     quantity: "",
   };
   const location = useLocation();
-  const dispatch = useDispatch();
+  const { changeProductQuantity, addProduct } = useCartActions();
+  const { editProduct } = useProductsActions();
   const isLogged = useTypedSelector((state) => state.isLogged);
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
   const [productItem, setProductItem] = useState<ProductType>(location.state.product);
@@ -33,7 +31,6 @@ const ProductPage = () => {
   const [errors, setErrors] = useState<ErrorsProductType>(initialErrorsValue);
 
   const decrement = (): void => {
-    console.log(location.state.product);
     setProductQuantity(productQuantity === 1 ? productQuantity : productQuantity - 1);
   };
 
@@ -64,19 +61,17 @@ const ProductPage = () => {
         finalProductQuantity > productItem.quantity - cartItem.quantity
           ? productItem.quantity
           : finalProductQuantity + cartItem.quantity;
-      dispatch(changeProductQuantity(cartItem, maxAvailableQuantity));
+      changeProductQuantity(cartItem, maxAvailableQuantity);
     } else {
-      dispatch(
-        addProduct({
-          id: productItem.id,
-          title: productItem.title,
-          price: productItem.price,
-          cartImage: productItem.cartImage,
-          quantity: finalProductQuantity,
-          quantityInStock: productItem.quantity,
-          totalPrice: totalPriceCalculated,
-        })
-      );
+      addProduct({
+        id: productItem.id,
+        title: productItem.title,
+        price: productItem.price,
+        cartImage: productItem.cartImage,
+        quantity: finalProductQuantity,
+        quantityInStock: productItem.quantity,
+        totalPrice: totalPriceCalculated,
+      });
     }
     setProductQuantity(1);
   };
@@ -99,7 +94,7 @@ const ProductPage = () => {
         return;
       }
     }
-    dispatch(editProduct(newProductInfo));
+    editProduct(newProductInfo);
     setProductItem(newProductInfo);
     editProductInfo();
   };

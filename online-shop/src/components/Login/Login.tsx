@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser, loginAdmin } from "../../store/actions/login";
-import { deactivateModal } from "../../store/actions/modal";
+import { useLoginActions, useModalActions } from "../../hooks/useActions";
 import { LoginType } from "../../types/login";
 import { validateLoginInput } from "../../utils/validateLoginInput";
 import { authorization } from "../../utils/authorization";
@@ -17,7 +15,8 @@ const Login = () => {
   };
   let loggedInRole = "";
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { deactivateModal } = useModalActions();
+  const { loginUser, loginAdmin } = useLoginActions();
   const [formValues, setFormValues] = useState<LoginType>(startValues);
   const [errors, setErrors] = useState<LoginType>(startValues);
 
@@ -46,8 +45,8 @@ const Login = () => {
       }
       setFormValues(startValues);
       setErrors(startValues);
-      dispatch(deactivateModal());
-      dispatch(loggedInRole === "user" ? loginUser() : loginAdmin());
+      deactivateModal();
+      loggedInRole === "user" ? loginUser() : loginAdmin();
       navigate("/catalog");
     });
   };
@@ -56,7 +55,7 @@ const Login = () => {
     event.preventDefault();
     setFormValues(startValues);
     setErrors(startValues);
-    dispatch(deactivateModal());
+    deactivateModal();
   };
 
   return (

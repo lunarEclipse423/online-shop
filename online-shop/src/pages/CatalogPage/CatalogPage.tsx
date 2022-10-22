@@ -1,24 +1,23 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { getAllProducts } from "../../api/ShopService";
-import { firstEntry } from "../../store/actions/entry";
-import { fetchProducts } from "../../store/actions/products";
-import { useTypedSelector } from "../../hooks/storeHooks";
+import { useEntryActions, useProductsActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ProductType } from "../../types/products";
 import CatalogItem from "../../components/CatalogItem/CatalogItem";
 import "./CatalogPage.scss";
 
 const CatalogPage = () => {
-  const dispatch = useDispatch();
+  const { firstEntry } = useEntryActions();
+  const { fetchProducts } = useProductsActions();
   const productItems = useTypedSelector((state) => state.manageProducts.products);
   const entry = useTypedSelector((state) => state.firtEntry);
   const [products, setProducts] = useState<ProductType[] | null>(null);
 
   useEffect(() => {
     if (entry) {
-      dispatch(firstEntry());
+      firstEntry();
       getAllProducts().then((data) => {
-        dispatch(fetchProducts(data));
+        fetchProducts(data);
         setProducts(productItems);
       });
     } else {

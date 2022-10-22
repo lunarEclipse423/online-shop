@@ -1,14 +1,13 @@
 import React, { useState, useMemo } from "react";
-import { useDispatch } from "react-redux";
-import { clearCart } from "../../store/actions/cart";
 import { calculateCartSum } from "../../utils/calculateCartSum";
-import { useTypedSelector } from "../../hooks/storeHooks";
+import { useCartActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Button from "../../components/UI/button/Button";
 import CartItem from "../../components/CartItem/CartItem";
 import "./CartPage.scss";
 
 const CartPage = () => {
-  const dispatch = useDispatch();
+  const { clearCart } = useCartActions();
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
   const [totalPrice, setTotalPrice] = useState<number>(calculateCartSum(cartItems));
 
@@ -16,7 +15,7 @@ const CartPage = () => {
 
   const removeAllFromCart = (event: React.MouseEvent<HTMLElement>): void => {
     event.preventDefault();
-    dispatch(clearCart());
+    clearCart();
   };
 
   return (
