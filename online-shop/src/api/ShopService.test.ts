@@ -42,7 +42,7 @@ describe("API functions", () => {
     mockFetch(TEST_PRODUCT);
 
     // when
-    const product = await getProductById<ProductType>(987278001);
+    const product = await getProductById<ProductType>(TEST_PRODUCT.id);
 
     // then
     expect(global.fetch).toBeCalledTimes(1);
