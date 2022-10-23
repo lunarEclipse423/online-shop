@@ -1,0 +1,77 @@
+@import "../../sass/abstract/constants";
+@import "../../sass/abstract/placeholders";
+@import "../../sass/abstract/mixins";
+
+.login-form {
+  position: relative;
+}
+
+.login-icon-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.icon_login-logo {
+  width: 69px;
+  height: 70px;
+  display: inline-block;
+  background-image: url(../../icons/icon_login-logo.svg);
+}
+
+.cross-icon-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.icon_cross {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-image: url(../../icons/icon_cross.svg);
+}
+
+.login__title {
+  margin-top: 12px;
+  margin-bottom: 30px;
+  @extend %font-secondary;
+  @include font(2rem, 2.6rem);
+  letter-spacing: -0.9px;
+  color: $color-text-primary;
+  text-align: center;
+}
+
+.inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__input,
+.password__input {
+  margin-top: 12px;
+}
+
+.buttons-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-form__button {
+  padding: 8px 55px;
+}
+
+.cancel_button {
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
+  letter-spacing: -0.9px;
+  text-decoration-line: underline;
+  color: $color-primary;
+  background: none;
+  border: 1px solid $color-light;
+}
+
+.cancel_button:hover {
+  border: 1px solid $color-primary;
+}

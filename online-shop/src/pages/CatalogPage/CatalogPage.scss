@@ -1,0 +1,31 @@
+@import "../../sass/abstract/constants";
+@import "../../sass/abstract/placeholders";
+@import "../../sass/abstract/mixins";
+
+.catalog {
+  padding: 90px 165px 125px;
+}
+
+.catalog__title {
+  @extend %font-primary;
+  @include font(4rem, 5.8rem);
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: $color-catalog-title;
+}
+
+.catalog__text {
+  margin-bottom: 60px;
+  @extend %font-primary;
+  @include font(1.8rem, 2.8rem);
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: $color-catalog-text;
+}
+
+.catalog-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}

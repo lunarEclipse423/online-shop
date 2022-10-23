@@ -1,0 +1,210 @@
+@import "../../sass/abstract/constants";
+@import "../../sass/abstract/placeholders";
+@import "../../sass/abstract/mixins";
+
+.product-page {
+  padding: 122px 165px 114px;
+  @extend %font-primary;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-image {
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.candleaf-info {
+  margin-top: 17px;
+  padding: 0 30px 0;
+  @include font(2.2rem, 2.6rem);
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: $color-text-primary;
+}
+
+.text-shipping {
+  margin-top: 20px;
+  @extend %font-secondary;
+  @include font(2rem, 2.6rem, 700);
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: $color-primary;
+}
+
+.product-info {
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info__short-details {
+  margin-bottom: 67px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product__title {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 58px;
+  letter-spacing: -0.9px;
+  color: $color-text-primary;
+}
+
+.product__price {
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 58px;
+  letter-spacing: -0.9px;
+  color: $color-primary;
+}
+
+.product__available,
+.quantity__title {
+  margin-bottom: 5px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
+  letter-spacing: -0.9px;
+  color: $color-text-primary;
+}
+
+.product__quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.icon_cart_white {
+  width: 25px;
+  height: 24px;
+  display: inline-block;
+  background-image: url(../../icons/icon_cart_white.svg);
+}
+
+.product__icon {
+  margin-right: 10px;
+}
+
+.product__description {
+  margin-top: 60px;
+  padding: 22px;
+  @include font(1.6rem, 2.6rem, 400);
+  color: $color-product-description;
+  border: 1px solid $color-product-description-border;
+  border-radius: 7px;
+}
+
+.description_bold {
+  color: $color-product-description-bold;
+}
+
+.product__button {
+  padding: 8px 93px;
+  align-self: flex-end;
+}
+
+.product__button:hover .icon_cart_white {
+  width: 24px;
+  height: 23px;
+  background-image: url(./../../icons/icon_cart_green.svg);
+}
+
+.unauth__text {
+  padding: 8px 40px;
+  align-self: flex-end;
+  @include font(2.06rem, 2.4rem);
+}
+
+/* Quantity */
+.quantity__title {
+  margin-bottom: 8px;
+}
+
+.quantity-border {
+  width: 92px;
+  border: 1px solid $color-primary;
+}
+
+.quantity-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.quantity-form__number {
+  width: 30px;
+  height: 30px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
+  letter-spacing: -0.9px;
+  color: $color-quantity-number;
+  text-align: center;
+  border: none;
+}
+
+.quantity-form__plus,
+.quantity-form__minus {
+  padding: 0;
+  width: 20px;
+  height: 30px;
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: $color-primary;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.quantity-form__minus {
+  padding-left: 10px;
+  color: $color-quantity-minus;
+}
+
+.quantity-form__plus {
+  padding-right: 10px;
+}
+
+.edit-buttons-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.edit__button {
+  margin-left: 20px;
+}
+
+.cancel_button {
+  @extend %font-secondary;
+  @include font(1.8rem, 2.6rem, 400);
+  letter-spacing: -0.9px;
+  text-decoration-line: underline;
+  color: $color-primary;
+  background: none;
+  border: 1px solid $color-light;
+}
+
+.cancel_button:hover {
+  border: 1px solid $color-primary;
+}
+
+.edit_input {
+  height: 30px;
+  @extend %font-primary;
+  @include font(1.4rem, 2.6rem, 400);
+  color: $color-text-primary;
+}
+
+.quantity_input {
+  width: 80px;
+}
+
+.weight_input,
+.composition_input {
+  margin-top: 15px;
+}

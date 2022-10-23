@@ -1,0 +1,125 @@
+@import "../../../sass/abstract/constants";
+@import "../../../sass/abstract/placeholders";
+@import "../../../sass/abstract/mixins";
+
+.navbar {
+  position: fixed;
+  padding: 20px 170px 20px 165px;
+  width: 100%;
+  @extend %font-secondary;
+  @include font(1.6rem, 1.9rem);
+  color: $color-navbar-text;
+  background: $color-light;
+  z-index: 3;
+}
+
+.navbar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  text-decoration: none;
+  display: flex;
+}
+
+.logo:hover {
+  transition: all 0.5s;
+  transform: scale(1.1);
+}
+
+.navbar__logo-icon {
+  margin-right: 6px;
+}
+
+.logo__text {
+  @extend %font-primary;
+  @include font(2rem, 3.8rem, 600);
+  color: $color-primary;
+}
+
+.navbar__links {
+  padding-left: 0;
+  display: flex;
+  list-style: none;
+}
+
+.navigation__item {
+  margin-left: 70px;
+  cursor: pointer;
+}
+
+.navigation__link {
+  color: $color-navbar-text;
+  text-decoration: none;
+}
+
+.navigation__link:hover {
+  color: $color-primary;
+}
+
+.tools {
+  padding-left: 0;
+  display: flex;
+  list-style: none;
+}
+
+.tools__item {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.navbar__icon-cart {
+  position: relative;
+}
+
+.cart-items-indicator {
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 13px;
+  height: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @extend %font-secondary;
+  @include font(1rem, 1.2rem);
+  border-radius: 50%;
+  color: $color-light;
+  background: $color-primary;
+}
+
+// ICONS
+
+.icon_logo {
+  width: 35px;
+  height: 34px;
+  display: inline-block;
+  background-image: url(../../../icons/icon_logo.svg);
+}
+
+.icon_login {
+  width: 26px;
+  height: 26px;
+  display: inline-block;
+  background-image: url(../../../icons/icon_login.svg);
+}
+
+.icon_logout {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  background-image: url(../../../icons/icon_logout.svg);
+}
+
+.icon_cart {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background-image: url(../../../icons/icon_cart.svg);
+}

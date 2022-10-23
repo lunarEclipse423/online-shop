@@ -1,0 +1,30 @@
+@import "../../../sass/abstract/constants";
+@import "../../../sass/abstract/placeholders";
+@import "../../../sass/abstract/mixins";
+
+.textarea {
+  padding: 7px 17px;
+  width: 100%;
+  @extend %font-primary;
+  @include font(1.4rem, 2.6rem, 400);
+  color: $color-textarea-text;
+  background: $color-light;
+  border: 0.5px solid $color-textarea-border;
+  resize: none;
+}
+
+.textarea:focus {
+  outline: none;
+  border: 0.5px solid $color-primary;
+}
+
+.textarea::placeholder,
+.error {
+  @extend %font-primary;
+  @include font(1.4rem, 2.6rem, 400);
+  color: $color-textarea-placeholder;
+}
+
+.error {
+  color: $color-error-text;
+}

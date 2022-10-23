@@ -1,0 +1,96 @@
+@import "../../sass/abstract/constants";
+@import "../../sass/abstract/placeholders";
+@import "../../sass/abstract/mixins";
+
+.cart {
+  padding: 122px 165px 114px;
+}
+
+.cart__title {
+  margin-bottom: 17px;
+  text-align: center;
+  @extend %font-primary;
+  @include font(2.6rem, 5.8rem);
+  letter-spacing: -0.9px;
+  color: $color-text-primary;
+}
+
+.cart-item-titles {
+  padding-bottom: 17px;
+  display: flex;
+  @extend %font-secondary;
+  @include font(1.6rem, 2.6rem);
+  letter-spacing: -0.9px;
+  color: $color-text-primary;
+  border-bottom: 1px solid $color-cart-divisor;
+}
+
+.cart-item-title {
+  width: 55%;
+}
+
+.cart-item-price,
+.cart-item-quantity,
+.cart-item-total {
+  width: 15%;
+  text-align: end;
+}
+
+.cart-items {
+  padding: 40px 0;
+}
+
+.cart-empty-message {
+  @extend %font-primary;
+  @include font(2.2rem, 2.6rem, 400);
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: $color-cart-empty-message;
+}
+
+.cart-bottom {
+  padding-top: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  @extend %font-secondary;
+  @include font(2rem, 2.6rem);
+  letter-spacing: -0.9px;
+  color: $color-text-primary;
+  border-top: 1px solid $color-cart-divisor;
+}
+
+.cart__price-info {
+  margin-bottom: 20px;
+}
+
+.cart___total-price {
+  margin-left: 60px;
+}
+
+.cart__tax {
+  @extend %font-secondary;
+  @include font(1.6rem, 2.6rem, 400);
+  text-align: right;
+  letter-spacing: -0.9px;
+  color: $color-cart-tax-text;
+}
+
+.hidden {
+  display: none;
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart__button,
+.cart__button:hover {
+  margin-left: 20px;
+  color: $color-light;
+  background: $color-cart-button;
+  border: 1px solid $color-cart-button;
+  cursor: auto;
+}
