@@ -7,7 +7,7 @@ const AppRouter = () => {
       {routes.map((route) => (
         <Route path={route.path} element={<route.element />} />
       ))}
-      <Route path="/online-shop" element={<Navigate to="/catalog" replace />} />
+      <Route path="/" element={<Navigate to="/catalog" replace />} />
       <Route path="*" element={<Navigate to="/error" replace />} />
     </Routes>
   );
