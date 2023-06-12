@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useCartActions } from "../../hooks/useActions";
 import { CartType } from "../../types/cart";
-import { baseImageUrl } from "../../api/ShopService";
 import Button from "../UI/button/Button";
 import "./CartItem.scss";
+import { baseImageUrl } from "../../constants/urls";
 
 const CartItem = ({ ...product }: CartType) => {
   const cartItems = useTypedSelector((state) => state.manageCartItems.cartItems);
