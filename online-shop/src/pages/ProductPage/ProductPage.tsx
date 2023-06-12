@@ -5,11 +5,11 @@ import { validateProductInfo } from "../../utils/validateProductInfo";
 import { calculateTotal } from "../../utils/calculateTotal";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { ProductType, ErrorsProductType } from "../../types/products";
-import { baseImageUrl } from "../../api/ShopService";
 import Input from "../../components/UI/input/Input";
 import Textarea from "../../components/UI/textarea/Textarea";
 import Button from "../../components/UI/button/Button";
 import "./ProductPage.scss";
+import { baseImageUrl } from "../../constants/urls";
 
 const ProductPage = () => {
   const initialErrorsValue: ErrorsProductType = {

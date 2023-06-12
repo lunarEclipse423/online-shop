@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { baseImageUrl } from "../../constants/urls";
 import { ProductType } from "../../types/products";
-import { baseImageUrl } from "../../api/ShopService";
 import "./CatalogItem.scss";
 
 const CatalogItem = ({ ...product }: ProductType) => {
