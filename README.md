@@ -1,6 +1,6 @@
 # Candleaf
 
-Фейковый онлайн-магазин свечей. Стэк технологий: TypeScript, React, Redux, HTML, SСSS, Jest.
+Фейковый онлайн-магазин свечей. Стек технологий: TypeScript, React, Redux, HTML, SСSS, Jest.
 
 ![online-shop](https://user-images.githubusercontent.com/61159646/198730332-7ef26ee5-8de0-4728-87fa-d3fbddc9418a.png)
 
@@ -45,4 +45,4 @@ Admin
 ## Дополнительно
 
 [Дизайн онлайн-магазина (figma)](https://www.figma.com/community/file/1153839241978323536)  
-[Демо](https://lunareclipse423.github.io/online-shop)  
+[Демо](https://online-shop-amber.vercel.app/catalog)  
